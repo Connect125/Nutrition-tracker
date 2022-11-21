@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="475.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Day #">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </Label>
+            <Label text="Name">
+               <padding>
+                  <Insets bottom="10.0" left="50.0" right="10.0" top="10.0" />
+               </padding>
+            </Label>
+            <Label text="Calories">
+               <padding>
+                  <Insets bottom="10.0" left="50.0" right="10.0" top="10.0" />
+               </padding>
+            </Label>
+            <Label text="Salt">
+               <padding>
+                  <Insets bottom="10.0" left="60.0" right="10.0" top="10.0" />
+               </padding>
+            </Label>
+            <Label text="Fat">
+               <padding>
+                  <Insets bottom="10.0" left="75.0" right="10.0" top="10.0" />
+               </padding>
+            </Label>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Breakfast">
+               <padding>
+                  <Insets left="8.0" right="10.0" />
+               </padding>
+            </Label>
+            <TextField prefWidth="100.0" />
+            <TextField prefWidth="100.0" />
+            <TextField prefWidth="100.0" />
+            <TextField prefWidth="100.0" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Lunch">
+               <padding>
+                  <Insets left="10.0" right="25.0" />
+               </padding>
+            </Label>
+            <TextField prefWidth="100.0" />
+            <TextField prefWidth="100.0" />
+            <TextField prefWidth="100.0" />
+            <TextField prefWidth="100.0" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Dinner">
+               <padding>
+                  <Insets left="10.0" right="20.0" />
+               </padding>
+            </Label>
+            <TextField prefWidth="100.0" />
+            <TextField prefWidth="100.0" />
+            <TextField prefWidth="100.0" />
+            <TextField prefWidth="100.0" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Snack 1">
+               <padding>
+                  <Insets left="10.0" right="15.0" />
+               </padding>
+            </Label>
+            <TextField prefWidth="100.0" />
+            <TextField prefWidth="100.0" />
+            <TextField prefWidth="100.0" />
+            <TextField prefWidth="100.0" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Snack 2">
+               <padding>
+                  <Insets left="10.0" right="15.0" />
+               </padding>
+            </Label>
+            <TextField prefWidth="100.0" />
+            <TextField prefWidth="100.0" />
+            <TextField prefWidth="100.0" />
+            <TextField prefWidth="100.0" />
+         </children>
+      </HBox>
+      <Button mnemonicParsing="false" text="Next Day/Done" />
+   </children>
+</VBox>
