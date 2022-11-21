@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="475.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="475.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
@@ -103,6 +102,6 @@
             <TextField prefWidth="100.0" />
          </children>
       </HBox>
-      <Button mnemonicParsing="false" text="Next Day/Done" />
+      <Button mnemonicParsing="false" onAction="#switchToMainScreen" text="Next Day/Done" />
    </children>
 </VBox>

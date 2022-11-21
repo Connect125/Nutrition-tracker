@@ -6,12 +6,12 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
    <children>
       <Label text="Main Screen" />
       <Label text="Nutrition Being Tracked:" />
       <Label fx:id="trackedNutrients" text="" />
       <Button mnemonicParsing="false" text="Add new Nutrient" />
-      <Button mnemonicParsing="false" text="Enter Nutritional Data" />
+      <Button mnemonicParsing="false" onAction="#switchToNutrtionDataEntry" text="Enter Nutritional Data" />
    </children>
 </VBox>
