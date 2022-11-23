@@ -12,6 +12,6 @@
       <Label text="Nutrition Being Tracked:" />
       <Label fx:id="trackedNutrients" text="" />
       <Button mnemonicParsing="false" text="Add new Nutrient" />
-      <Button mnemonicParsing="false" onAction="#switchToNutrtionDataEntry" text="Enter Nutritional Data" />
+      <Button mnemonicParsing="false" onAction="#switchToNutritionDataEntry" text="Enter Nutritional Data" />
    </children>
 </VBox>

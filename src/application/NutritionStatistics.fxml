@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="142.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
+   <children>
+      <Label text="Statistics" />
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Average" />
+            <Label text="High" />
+            <Label text="Low" />
+            <Label text="Total" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Calories" />
+            <Label text="Label" />
+            <Label text="Label" />
+            <Label text="Label" />
+            <Label text="Label" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Salt" />
+            <Label text="Label" />
+            <Label text="Label" />
+            <Label text="Label" />
+            <Label text="Label" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Fat" />
+            <Label text="Label" />
+            <Label text="Label" />
+            <Label text="Label" />
+            <Label text="Label" />
+         </children>
+      </HBox>
+      <Button mnemonicParsing="false" onAction="#switchToMainScreen" text="Done/Return To Main" />
+   </children>
+</VBox>

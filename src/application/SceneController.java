@@ -21,8 +21,15 @@ public class SceneController {
 		stage.setScene(scene);
 		stage.show();
 	}
-	public void switchToNutrtionDataEntry(ActionEvent event) throws IOException{
-		root = FXMLLoader.load(getClass().getResource("NutrtionDataEntry.fxml"));
+	public void switchToNutritionDataEntry(ActionEvent event) throws IOException{
+		root = FXMLLoader.load(getClass().getResource("NutritionDataEntry.fxml"));
+		stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
+	public void switchToNutritionStatistics(ActionEvent event) throws IOException{
+		root = FXMLLoader.load(getClass().getResource("NutritionStatistics.fxml"));
 		stage = (Stage)((Node) event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
