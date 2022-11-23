@@ -12,7 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class SceneController {
+public class MainSceneController {
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
