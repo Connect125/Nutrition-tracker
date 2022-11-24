@@ -7,8 +7,8 @@ import javafx.scene.control.TextField;
 public class Nutrients {
 	
 
-	public Nutrients() {
-		int[] array = new int[5];
+	public Nutrients(String breakfast, String lunch, String dinner, String snack1, String snack2) {
+		
 	}
 
 }

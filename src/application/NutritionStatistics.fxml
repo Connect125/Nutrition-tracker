@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="142.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainSceneController">
+<VBox prefHeight="142.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.StatisticsSceneController">
    <children>
       <Label text="Statistics" />
       <HBox prefHeight="100.0" prefWidth="200.0">
@@ -19,10 +19,10 @@
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
             <Label text="Calories" />
-            <Label fx:id="averageCalories" text="Label" />
-            <Label text="Label" />
-            <Label text="Label" />
-            <Label text="Label" />
+            <Label fx:id="averageCaloriesLabel" text="Label" />
+            <Label fx:id="highCaloriesLabel" text="Label" />
+            <Label fx:id="lowCaloriesLabel" text="Label" />
+            <Label fx:id="totalCaloriesLabel" text="Label" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">

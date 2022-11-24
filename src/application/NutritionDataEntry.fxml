@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="475.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainSceneController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="475.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DataEntrySceneController">
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
@@ -102,7 +102,6 @@
             <TextField fx:id="snack2Fat" prefWidth="100.0" />
          </children>
       </HBox>
-      <Button fx:id="saveData" mnemonicParsing="false" text="Save Data" />
       <Button mnemonicParsing="false" onAction="#switchToNutritionStatistics" text="Next Day/Done" />
    </children>
 </VBox>
