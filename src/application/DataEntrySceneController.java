@@ -38,7 +38,16 @@ public class DataEntrySceneController {
 	
 	public void switchToNutritionStatistics(ActionEvent event) throws IOException{
 		int index = 0;
+		String averageCaloriesDisplay = new String();
 		
+		Nutrients calories = new Nutrients(breakfastCalories.getText(), lunchCalories.getText(), dinnerCalories.getText(), snack1Calories.getText(), snack2Calories.getText());
+		
+		System.out.println("Created new Nutrient");
+		
+		averageCaloriesDisplay = String.valueOf(calories.CalculateAverage(calories.getList())); 
+		
+		System.out.println("Calculated Average");
+		/**
 		double[] caloriesList = new double[5];
 		caloriesList[0] = Double.parseDouble(breakfastCalories.getText());
 		caloriesList[1] = Double.parseDouble(lunchCalories.getText());
@@ -60,7 +69,7 @@ public class DataEntrySceneController {
 				averageCaloriesCalc = averageCaloriesCalc/caloriesList.length;
 				averageCaloriesDisplay = String.valueOf(averageCaloriesCalc);
 			}
-		}
+		}*/
 		
 		
 		System.out.println("Working " + breakfastCalories.getText());
@@ -71,7 +80,7 @@ public class DataEntrySceneController {
 		StatisticsSceneController StatisticsSceneController = loader.getController();
 		StatisticsSceneController.displayCaloriesAverage(averageCaloriesDisplay);
 		
-		//Below line causes the labels to not update for the Statisitics scene
+		//Below line causes the labels to not update for the Statistics scene
 		//root = FXMLLoader.load(getClass().getResource("NutritionStatistics.fxml"));
 		stage = (Stage)((Node) event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
