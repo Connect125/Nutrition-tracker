@@ -21,12 +21,42 @@ public class DataEntrySceneController {
 	
 	@FXML
 	private TextField dinnerCalories;
-	
+
 	@FXML
 	private TextField snack1Calories;
 	
 	@FXML
 	private TextField snack2Calories;
+	
+	@FXML
+	private TextField breakfastSalt; 
+	
+	@FXML
+	private TextField lunchSalt;
+	
+	@FXML
+	private TextField dinnerSalt;
+
+	@FXML
+	private TextField snack1Salt;
+	
+	@FXML
+	private TextField snack2Salt;
+	
+	@FXML
+	private TextField breakfastFat; 
+	
+	@FXML
+	private TextField lunchFat;
+	
+	@FXML
+	private TextField dinnerFat;
+
+	@FXML
+	private TextField snack1Fat;
+	
+	@FXML
+	private TextField snack2Fat;
 
 	private Stage stage;
 	private Scene scene;
@@ -37,48 +67,25 @@ public class DataEntrySceneController {
 	}
 	
 	public void switchToNutritionStatistics(ActionEvent event) throws IOException{
-		int index = 0;
 		String averageCaloriesDisplay = new String();
+		String averageSaltDisplay = new String();
+		String averageFatDisplay = new String();
 		
 		Nutrients calories = new Nutrients(breakfastCalories.getText(), lunchCalories.getText(), dinnerCalories.getText(), snack1Calories.getText(), snack2Calories.getText());
+		Nutrients salt = new Nutrients(breakfastSalt.getText(), lunchSalt.getText(), dinnerSalt.getText(), snack1Salt.getText(), snack2Salt.getText());
+		Nutrients fat = new Nutrients(breakfastFat.getText(), lunchFat.getText(), dinnerFat.getText(), snack1Fat.getText(), snack2Fat.getText());
 		
-		System.out.println("Created new Nutrient");
-		
+		//Getting the average value of each list and assigning it to a string
 		averageCaloriesDisplay = String.valueOf(calories.CalculateAverage(calories.getList())); 
-		
-		System.out.println("Calculated Average");
-		/**
-		double[] caloriesList = new double[5];
-		caloriesList[0] = Double.parseDouble(breakfastCalories.getText());
-		caloriesList[1] = Double.parseDouble(lunchCalories.getText());
-		caloriesList[2] = Double.parseDouble(dinnerCalories.getText());
-		caloriesList[3] = Double.parseDouble(snack1Calories.getText());
-		caloriesList[4] = Double.parseDouble(snack2Calories.getText());
-		
-		String averageCaloriesDisplay = new String();
-		double averageCaloriesCalc = 0;
-		
-		while (index < caloriesList.length) {
-			
-			averageCaloriesCalc = averageCaloriesCalc + caloriesList[index];
-			index ++;
-			
-			System.out.println("index " + index);
-			
-			if (index >= caloriesList.length) {
-				averageCaloriesCalc = averageCaloriesCalc/caloriesList.length;
-				averageCaloriesDisplay = String.valueOf(averageCaloriesCalc);
-			}
-		}*/
-		
-		
-		System.out.println("Working " + breakfastCalories.getText());
+		averageSaltDisplay = String.valueOf(salt.CalculateAverage(salt.getList())); 
+		averageFatDisplay = String.valueOf(fat.CalculateAverage(fat.getList())); 
+
 
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("NutritionStatistics.fxml"));
 		root = loader.load();
 		
 		StatisticsSceneController StatisticsSceneController = loader.getController();
-		StatisticsSceneController.displayCaloriesAverage(averageCaloriesDisplay);
+		StatisticsSceneController.displayAverages(averageCaloriesDisplay,averageSaltDisplay,averageFatDisplay);
 		
 		//Below line causes the labels to not update for the Statistics scene
 		//root = FXMLLoader.load(getClass().getResource("NutritionStatistics.fxml"));

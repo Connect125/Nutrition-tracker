@@ -28,7 +28,7 @@
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
             <Label text="Salt" />
-            <Label text="Label" />
+            <Label fx:id="averageSaltLabel" text="Label" />
             <Label text="Label" />
             <Label text="Label" />
             <Label text="Label" />
@@ -37,7 +37,7 @@
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
             <Label text="Fat" />
-            <Label text="Label" />
+            <Label fx:id="averageFatLabel" text="Label" />
             <Label text="Label" />
             <Label text="Label" />
             <Label text="Label" />

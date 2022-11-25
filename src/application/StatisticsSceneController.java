@@ -16,6 +16,12 @@ public class StatisticsSceneController {
 	@FXML
 	private Label averageCaloriesLabel;
 	
+	@FXML
+	private Label averageSaltLabel;
+	
+	@FXML
+	private Label averageFatLabel;
+	
 	
 	private Stage stage;
 	private Scene scene;
@@ -32,11 +38,17 @@ public class StatisticsSceneController {
 		stage.setScene(scene);
 		stage.show();
 	}
-	public void displayCaloriesAverage(String averageCaloriesDisplay) {
-		System.out.println("averageCaloriesDisplay Working " + averageCaloriesDisplay);
+	public void displayAverages(String averageCaloriesDisplay, String averageSaltDisplay, String averageFatDisplay) {
 		averageCaloriesLabel.setText(averageCaloriesDisplay);
-		System.out.println("Label " + averageCaloriesLabel.getText());
+		averageSaltLabel.setText(averageSaltDisplay);
+		averageFatLabel.setText(averageFatDisplay);
 	}
+	public void displayHigh(String highCaloriesDisplay, String highSaltDisplay, String highFatDisplay) {
+		highCaloriesLabel.setText(highCaloriesDisplay);
+		highSaltLabel.setText(highSaltDisplay);
+		highFatLabel.setText(highFatDisplay);
+	}
+	
 
 
 }
