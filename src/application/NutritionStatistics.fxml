@@ -1,46 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="142.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
+<VBox prefHeight="142.0" prefWidth="260.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.StatisticsSceneController">
    <children>
       <Label text="Statistics" />
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Average" />
-            <Label text="High" />
-            <Label text="Low" />
-            <Label text="Total" />
+            <Label text="Average">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="45.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <Label text="High">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <Label text="Low">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <Label text="Total">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Calories" />
-            <Label text="Label" />
-            <Label text="Label" />
-            <Label text="Label" />
-            <Label text="Label" />
+            <Label text="Calories">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin></Label>
+            <Label fx:id="averageCaloriesLabel" text="0.00">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <Label fx:id="highCaloriesLabel" text="0.00">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="25.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <Label fx:id="lowCaloriesLabel" text="0.00">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="13.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <Label fx:id="totalCaloriesLabel" text="0.00">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="11.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Salt" />
-            <Label text="Label" />
-            <Label text="Label" />
-            <Label text="Label" />
-            <Label text="Label" />
+            <Label text="Salt">
+               <HBox.margin>
+                  <Insets bottom="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <Label fx:id="averageSaltLabel" text="0.00">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="23.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <Label fx:id="highSaltLabel" text="0.00">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="25.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <Label fx:id="lowSaltLabel" text="0.00">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="13.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <Label fx:id="totalSaltLabel" text="0.00">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="11.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Fat" />
-            <Label text="Label" />
-            <Label text="Label" />
-            <Label text="Label" />
-            <Label text="Label" />
+            <Label text="Fat">
+               <HBox.margin>
+                  <Insets bottom="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <Label fx:id="averageFatLabel" text="0.00">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="27.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <Label fx:id="highFatLabel" text="0.00">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="25.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <Label fx:id="lowFatLabel" text="0.00">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="13.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <Label fx:id="totalFatLabel" text="0.00">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="11.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
          </children>
       </HBox>
       <Button mnemonicParsing="false" onAction="#switchToMainScreen" text="Done/Return To Main" />
