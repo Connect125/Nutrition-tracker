@@ -41,7 +41,14 @@ public class MainSceneController {
 
 	
 	public void switchToNutritionDataEntry(ActionEvent event) throws IOException{
-		root = FXMLLoader.load(getClass().getResource("NutritionDataEntry.fxml"));
+		
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("NutritionDataEntry.fxml"));
+		root = loader.load();
+		
+		DataEntrySceneController DataEntrySceneController = loader.getController();
+		DataEntrySceneController.displayDayNumber("Day #1");
+		
+		//root = FXMLLoader.load(getClass().getResource("NutritionDataEntry.fxml"));
 		stage = (Stage)((Node) event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);

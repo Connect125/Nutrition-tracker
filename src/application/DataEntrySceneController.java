@@ -8,10 +8,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class DataEntrySceneController {
+	int dayIndex = 1;
 	
 	@FXML
 	private TextField breakfastCalories; 
@@ -57,36 +59,59 @@ public class DataEntrySceneController {
 	
 	@FXML
 	private TextField snack2Fat;
+	
+	@FXML
+	private Label dayNumberLabel;
 
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
 	
-	public DataEntrySceneController() {
-		// TODO Auto-generated constructor stub
+	public void displayDayNumber(String dayNumber) {
+		dayNumberLabel.setText(dayNumber);
+	}
+	
+	public void nextDay (ActionEvent event) throws IOException{
+		System.out.println("dayIndex " + dayIndex);
+		
+		dayIndex++;
+		
+		System.out.println("dayIndex " + dayIndex);
+
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("NutritionDataEntry.fxml"));
+		root = loader.load();
+		
+		DataEntrySceneController DataEntrySceneController = loader.getController();
+		DataEntrySceneController.displayDayNumber("Day #" + dayIndex);
+		
+		stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
 	}
 	
 	public void switchToNutritionStatistics(ActionEvent event) throws IOException{
 		//Strings for averages
-		String averageCaloriesDisplay = new String();
-		String averageSaltDisplay = new String();
-		String averageFatDisplay = new String();
+		String averageCaloriesDisplay = new String("NA");
+		String averageSaltDisplay = new String("NA");
+		String averageFatDisplay = new String("NA");
 		
 		//Strings for highs
-		String highCaloriesDisplay = new String();
-		String highSaltDisplay = new String();
-		String highFatDisplay = new String();
+		String highCaloriesDisplay = new String("NA");
+		String highSaltDisplay = new String("NA");
+		String highFatDisplay = new String("NA");
 		
 		//Strings for lows
-		String lowCaloriesDisplay = new String();
-		String lowSaltDisplay = new String();
-		String lowFatDisplay = new String();
+		String lowCaloriesDisplay = new String("NA");
+		String lowSaltDisplay = new String("NA");
+		String lowFatDisplay = new String("NA");
 		
 		//Strings for Totals
-		String totalCaloriesDisplay = new String();
-		String totalSaltDisplay = new String();
-		String totalFatDisplay = new String();
+		String totalCaloriesDisplay = new String("NA");
+		String totalSaltDisplay = new String("NA");
+		String totalFatDisplay = new String("NA");
 		
+		//Creating new Nutrient objects will crash if given empty text
 		Nutrients calories = new Nutrients(breakfastCalories.getText(), lunchCalories.getText(), dinnerCalories.getText(), snack1Calories.getText(), snack2Calories.getText());
 		Nutrients salt = new Nutrients(breakfastSalt.getText(), lunchSalt.getText(), dinnerSalt.getText(), snack1Salt.getText(), snack2Salt.getText());
 		Nutrients fat = new Nutrients(breakfastFat.getText(), lunchFat.getText(), dinnerFat.getText(), snack1Fat.getText(), snack2Fat.getText());
@@ -111,8 +136,7 @@ public class DataEntrySceneController {
 		totalSaltDisplay = String.valueOf(salt.CalculateTotal(salt.getList())); 
 		totalFatDisplay = String.valueOf(fat.CalculateTotal(fat.getList())); 
 		
-
-
+		//Passes all the data entered to the Statistics scene for display to user.
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("NutritionStatistics.fxml"));
 		root = loader.load();
 		
