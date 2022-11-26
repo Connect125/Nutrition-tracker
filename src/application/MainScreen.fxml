@@ -9,9 +9,7 @@
 <VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainSceneController">
    <children>
       <Label text="Main Screen" />
-      <Label text="Nutrition Being Tracked:" />
       <Label fx:id="trackedNutrients" text="" />
-      <Button mnemonicParsing="false" text="Add new Nutrient" />
       <Button mnemonicParsing="false" onAction="#switchToNutritionDataEntry" text="Enter Nutritional Data" />
    </children>
 </VBox>

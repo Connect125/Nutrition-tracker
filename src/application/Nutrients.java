@@ -25,11 +25,23 @@ public class Nutrients {
 	 * A string representing a number for amount of nutrients consumed during snack2
 	 */
 	public Nutrients(String breakfast, String lunch, String dinner, String snack1, String snack2) {
-		breakfastNum = Double.parseDouble(breakfast);
-		lunchNum = Double.parseDouble(lunch);
-		dinnerNum = Double.parseDouble(dinner);
-		snack1Num = Double.parseDouble(snack1);
-		snack2Num = Double.parseDouble(snack2);
+		String encapsulationBreakFast = new String();
+		String encapsulationLunch = new String();
+		String encapsulationDinner = new String();
+		String encapsulationSnack1 = new String();
+		String encapsulationSnack2 = new String();
+		
+		encapsulationBreakFast = breakfast;
+		encapsulationLunch = lunch;
+		encapsulationDinner = dinner;
+		encapsulationSnack1 = snack1;
+		encapsulationSnack2 = snack2;
+		
+		breakfastNum = Double.parseDouble(encapsulationBreakFast);
+		lunchNum = Double.parseDouble(encapsulationLunch);
+		dinnerNum = Double.parseDouble(encapsulationDinner);
+		snack1Num = Double.parseDouble(encapsulationSnack1);
+		snack2Num = Double.parseDouble(encapsulationSnack2);
 		
 	}
 	/**

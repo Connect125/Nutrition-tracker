@@ -61,6 +61,21 @@ public class DataEntrySceneController {
 	private TextField snack2Fat;
 	
 	@FXML
+	private TextField breakfastName; 
+	
+	@FXML
+	private TextField lunchName;
+	
+	@FXML
+	private TextField dinnerName;
+
+	@FXML
+	private TextField snack1Name;
+	
+	@FXML
+	private TextField snack2Name;
+	
+	@FXML
 	private Label dayNumberLabel;
 
 	private Stage stage;
@@ -88,6 +103,7 @@ public class DataEntrySceneController {
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
+		System.out.println("dayIndex " + dayIndex);
 	}
 	
 	public void switchToNutritionStatistics(ActionEvent event) throws IOException{
@@ -111,10 +127,16 @@ public class DataEntrySceneController {
 		String totalSaltDisplay = new String("NA");
 		String totalFatDisplay = new String("NA");
 		
+		//String for Most Common Meal Name
+		String mostCommonMealDisplay = new String("NA");
+		
 		//Creating new Nutrient objects will crash if given empty text
 		Nutrients calories = new Nutrients(breakfastCalories.getText(), lunchCalories.getText(), dinnerCalories.getText(), snack1Calories.getText(), snack2Calories.getText());
 		Nutrients salt = new Nutrients(breakfastSalt.getText(), lunchSalt.getText(), dinnerSalt.getText(), snack1Salt.getText(), snack2Salt.getText());
 		Nutrients fat = new Nutrients(breakfastFat.getText(), lunchFat.getText(), dinnerFat.getText(), snack1Fat.getText(), snack2Fat.getText());
+		
+		//Creating new MealName object
+		MealName meals = new MealName(breakfastName.getText(), lunchName.getText(), dinnerName.getText(), snack1Name.getText(), snack2Name.getText());
 		
 		//Getting the average value of each list and assigning it to a string
 		averageCaloriesDisplay = String.valueOf(calories.CalculateAverage(calories.getList())); 
@@ -136,6 +158,9 @@ public class DataEntrySceneController {
 		totalSaltDisplay = String.valueOf(salt.CalculateTotal(salt.getList())); 
 		totalFatDisplay = String.valueOf(fat.CalculateTotal(fat.getList())); 
 		
+		//Getting meal name info
+		mostCommonMealDisplay = meals.mostCommonMeal(meals.getNameList());
+		
 		//Passes all the data entered to the Statistics scene for display to user.
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("NutritionStatistics.fxml"));
 		root = loader.load();
@@ -145,6 +170,7 @@ public class DataEntrySceneController {
 		StatisticsSceneController.displayHighs(highCaloriesDisplay,highSaltDisplay,highFatDisplay);
 		StatisticsSceneController.displayLows(lowCaloriesDisplay,lowSaltDisplay,lowFatDisplay);
 		StatisticsSceneController.displayTotals(totalCaloriesDisplay,totalSaltDisplay,totalFatDisplay);
+		StatisticsSceneController.displayMealNames(mostCommonMealDisplay);
 		
 		
 		//Below line causes the labels to not update for the Statistics scene

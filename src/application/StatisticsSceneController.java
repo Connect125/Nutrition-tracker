@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 
 public class StatisticsSceneController {
 	
+	//FXML imports
 	@FXML
 	private Label averageCaloriesLabel;
 	
@@ -49,14 +50,15 @@ public class StatisticsSceneController {
 	@FXML
 	private Label totalFatLabel;
 	
+	@FXML
+	private Label mostCommonMealLabel;
 	
+	
+	//Instance Variables
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
 	
-	public StatisticsSceneController() {
-		// TODO Auto-generated constructor stub
-	}
 	
 	public void switchToMainScreen(ActionEvent event) throws IOException {
 		root = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
@@ -88,6 +90,9 @@ public class StatisticsSceneController {
 		totalCaloriesLabel.setText(totalCaloriesDisplay);
 		totalSaltLabel.setText(totalSaltDisplay);
 		totalFatLabel.setText(totalFatDisplay);
+	}
+	public void displayMealNames(String mostCommonMeal) {
+		mostCommonMealLabel.setText(mostCommonMeal);
 	}
 	
 

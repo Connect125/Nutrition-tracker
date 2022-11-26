@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="475.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DataEntrySceneController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="251.0" prefWidth="475.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DataEntrySceneController">
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
@@ -104,5 +104,7 @@
       </HBox>
       <Button mnemonicParsing="false" onAction="#nextDay" text="Next Day" />
       <Button mnemonicParsing="false" onAction="#switchToNutritionStatistics" text="Done" />
+      <Label text="Warning No Error Handling." />
+      <Label text="Will crash if Calories, Salt, or Fat is given no value or non-numeric" />
    </children>
 </VBox>
