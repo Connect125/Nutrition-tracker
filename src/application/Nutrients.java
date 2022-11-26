@@ -1,5 +1,8 @@
 package application;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 public class Nutrients {
 	
 	private double breakfastNum;
@@ -36,7 +39,6 @@ public class Nutrients {
 	 * Returns the list created
 	 */
 	public double[] getList() {
-		System.out.println("Making a list");
 		double[] nutrientList = new double[5];
 		
 		nutrientList[0] = breakfastNum;
@@ -57,19 +59,81 @@ public class Nutrients {
 	 * Returns the average value of the list as a double
 	 */
 	public double CalculateAverage(double[] nutrientList) {
-		System.out.println("Calculating Average");
 		double calculatedAverage = 0;
 		int index = 0;
-		System.out.println("b4 list");
 		while (index < nutrientList.length) {
-			System.out.println("in list + index " + index);
 			calculatedAverage = calculatedAverage + nutrientList[index];
 			index ++;
 		}
-		System.out.println("after list");
 		calculatedAverage = calculatedAverage/nutrientList.length;
 		return calculatedAverage;
 		
+	}
+	/**
+	 * This takes a list of doubles and returns the largest value
+	 * @param nutrientList
+	 * A list of doubles you want the largest value from.
+	 * @return
+	 * The largest value as a double
+	 */
+	public double FindHighValue (double[] nutrientList) {
+		double highValue = 0;
+		int index = 0; //remove
+		Arrays.sort(nutrientList);
+		
+		highValue = nutrientList[nutrientList.length-1]; //setting the high value for returning
+		
+		System.out.println("nutrientList");
+		while (index < nutrientList.length) {
+			System.out.println("index " + nutrientList[index]);
+			index++;
+		}
+		
+		System.out.println("highValue " + highValue);
+		
+		return highValue;
+	}
+	/**
+	 * This takes a list of doubles and returns the smallest value
+	 * @param nutrientList
+	 * A list of doubles you want the smallest value from.
+	 * @return
+	 * The smallest value as a double
+	 */
+	public double FindLowValue (double[] nutrientList) {
+		double lowValue = 0;
+		int index = 0; //remove
+		Arrays.sort(nutrientList);
+		
+		lowValue = nutrientList[0]; //setting the low value for returning
+		
+		System.out.println("nutrientList");
+		while (index < nutrientList.length) {
+			System.out.println("index " + nutrientList[index]);
+			index++;
+		}
+		
+		System.out.println("lowValue " + lowValue);
+		
+		return lowValue;
+	}
+	/**
+	 * Takes a list of doubles and returns the total
+	 * @param nutrientList
+	 * A list of doubles you want the total of
+	 * @return
+	 * The total of the list as a double
+	 */
+	public double CalculateTotal (double[] nutrientList) {
+		int index = 0;
+		double calculatedTotal = 0;
+		
+		while (index < nutrientList.length) {
+			calculatedTotal = calculatedTotal + nutrientList[index];
+			index ++;
+		}
+		System.out.println("calculatedTotal " + calculatedTotal);
+		return calculatedTotal;
 	}
 
 }

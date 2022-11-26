@@ -22,6 +22,33 @@ public class StatisticsSceneController {
 	@FXML
 	private Label averageFatLabel;
 	
+	@FXML
+	private Label highCaloriesLabel;
+	
+	@FXML
+	private Label highSaltLabel;
+	
+	@FXML
+	private Label highFatLabel;
+	
+	@FXML
+	private Label lowCaloriesLabel;
+	
+	@FXML
+	private Label lowSaltLabel;
+	
+	@FXML
+	private Label lowFatLabel;
+	
+	@FXML
+	private Label totalCaloriesLabel;
+	
+	@FXML
+	private Label totalSaltLabel;
+	
+	@FXML
+	private Label totalFatLabel;
+	
 	
 	private Stage stage;
 	private Scene scene;
@@ -38,15 +65,29 @@ public class StatisticsSceneController {
 		stage.setScene(scene);
 		stage.show();
 	}
+	
 	public void displayAverages(String averageCaloriesDisplay, String averageSaltDisplay, String averageFatDisplay) {
 		averageCaloriesLabel.setText(averageCaloriesDisplay);
 		averageSaltLabel.setText(averageSaltDisplay);
 		averageFatLabel.setText(averageFatDisplay);
 	}
-	public void displayHigh(String highCaloriesDisplay, String highSaltDisplay, String highFatDisplay) {
+	
+	public void displayHighs(String highCaloriesDisplay, String highSaltDisplay, String highFatDisplay) {
 		highCaloriesLabel.setText(highCaloriesDisplay);
 		highSaltLabel.setText(highSaltDisplay);
 		highFatLabel.setText(highFatDisplay);
+	}
+	
+	public void displayLows(String lowCaloriesDisplay, String lowSaltDisplay, String lowFatDisplay) {
+		lowCaloriesLabel.setText(lowCaloriesDisplay);
+		lowSaltLabel.setText(lowSaltDisplay);
+		lowFatLabel.setText(lowFatDisplay);
+	}
+	
+	public void displayTotals(String totalCaloriesDisplay, String totalSaltDisplay, String totalFatDisplay) {
+		totalCaloriesLabel.setText(totalCaloriesDisplay);
+		totalSaltLabel.setText(totalSaltDisplay);
+		totalFatLabel.setText(totalFatDisplay);
 	}
 	
 
