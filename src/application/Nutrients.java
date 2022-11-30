@@ -23,44 +23,20 @@ public class Nutrients {
 	 * A string representing a number for amount of nutrients consumed during snack1
 	 * @param snack2
 	 * A string representing a number for amount of nutrients consumed during snack2
+	 * @throws NumericOnlyException 
 	 */
-	public Nutrients(String breakfast, String lunch, String dinner, String snack1, String snack2) {
+	public Nutrients(String breakfast, String lunch, String dinner, String snack1, String snack2) throws NumericOnlyException {
 		String encapsulationBreakFast = new String();
 		String encapsulationLunch = new String();
 		String encapsulationDinner = new String();
 		String encapsulationSnack1 = new String();
 		String encapsulationSnack2 = new String();
 		
-		try {
-			NumericOnlyCheck(breakfast);
-		} catch (NumericOnlyException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			NumericOnlyCheck(lunch);
-		} catch (NumericOnlyException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			NumericOnlyCheck(dinner);
-		} catch (NumericOnlyException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			NumericOnlyCheck(snack1);
-		} catch (NumericOnlyException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			NumericOnlyCheck(snack2);
-		} catch (NumericOnlyException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		numericOnlyCheck(breakfast);
+		numericOnlyCheck(lunch);
+		numericOnlyCheck(dinner);
+		numericOnlyCheck(snack1);
+		numericOnlyCheck(snack2);
 		
 		encapsulationBreakFast = breakfast;
 		encapsulationLunch = lunch;
@@ -178,21 +154,23 @@ public class Nutrients {
 		return calculatedTotal;
 	}
 	
-	public void NumericOnlyCheck (String numString) throws NumericOnlyException {
-		boolean validProjectGrade = true;
+	public void numericOnlyCheck (String valueAsString) throws NumericOnlyException {
+		//Code adapting from my own coding challenges originally helped, and inspired by video content created by Nathaly Verwaal
+//------------------------------------------------------------------------------------------------------------
+		//Check that the user entered a numeric value
     	boolean firstDecimalCheck = true;
-    	for (char c : numString.toCharArray()) {
+    	
+    	for (char c : valueAsString.toCharArray()) {
     		//if any character is not a digit, set flag to false: it is not a number
     		if (!Character.isDigit(c) && c != '.') {
-    			validProjectGrade = false;
-    			throw new NumericOnlyException("Don't include the character: " + c + 
-    					". Project grade should be numeric. ");
+    			throw new NumericOnlyException("Non-numeric response");
     		}else if (c == '.' && firstDecimalCheck == true) {
     			firstDecimalCheck = false;
     		}else if (c == '.' && firstDecimalCheck == false) {
-    			throw new NumericOnlyException("Non-numeric value entered. Please only enter numeric values with a single decimal");
+    			throw new NumericOnlyException("More than one decimal");
     		}
     	}
+//--------------------------------------------------------------------------------------------------------------
 	}
 
 }

@@ -102,9 +102,21 @@
             <TextField fx:id="snack2Fat" prefWidth="100.0" />
          </children>
       </HBox>
-      <Button mnemonicParsing="false" onAction="#nextDay" text="Next Day" />
-      <Button mnemonicParsing="false" onAction="#switchToNutritionStatistics" text="Done" />
-      <Label fx:id="dataEntryErrorLabel" text="Warning No Error Handling." />
-      <Label text="Will crash if Calories, Salt, or Fat is given no value or non-numeric" />
+      <Button mnemonicParsing="false" onAction="#nextDay" text="Next Day">
+         <VBox.margin>
+            <Insets left="10.0" />
+         </VBox.margin></Button>
+      <Button mnemonicParsing="false" onAction="#switchToNutritionStatistics" text="Done">
+         <VBox.margin>
+            <Insets left="10.0" />
+         </VBox.margin></Button>
+      <Label fx:id="dataEntryErrorLabel" text="Please fill all cells with numerical values.">
+         <VBox.margin>
+            <Insets left="10.0" />
+         </VBox.margin></Label>
+      <Label fx:id="dataEntryErrorLabel2">
+         <VBox.margin>
+            <Insets left="10.0" />
+         </VBox.margin></Label>
    </children>
 </VBox>
