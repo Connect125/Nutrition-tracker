@@ -31,6 +31,37 @@ public class Nutrients {
 		String encapsulationSnack1 = new String();
 		String encapsulationSnack2 = new String();
 		
+		try {
+			NumericOnlyCheck(breakfast);
+		} catch (NumericOnlyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			NumericOnlyCheck(lunch);
+		} catch (NumericOnlyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			NumericOnlyCheck(dinner);
+		} catch (NumericOnlyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			NumericOnlyCheck(snack1);
+		} catch (NumericOnlyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			NumericOnlyCheck(snack2);
+		} catch (NumericOnlyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		encapsulationBreakFast = breakfast;
 		encapsulationLunch = lunch;
 		encapsulationDinner = dinner;
@@ -145,6 +176,23 @@ public class Nutrients {
 		}
 		System.out.println("calculatedTotal " + calculatedTotal);
 		return calculatedTotal;
+	}
+	
+	public void NumericOnlyCheck (String numString) throws NumericOnlyException {
+		boolean validProjectGrade = true;
+    	boolean firstDecimalCheck = true;
+    	for (char c : numString.toCharArray()) {
+    		//if any character is not a digit, set flag to false: it is not a number
+    		if (!Character.isDigit(c) && c != '.') {
+    			validProjectGrade = false;
+    			throw new NumericOnlyException("Don't include the character: " + c + 
+    					". Project grade should be numeric. ");
+    		}else if (c == '.' && firstDecimalCheck == true) {
+    			firstDecimalCheck = false;
+    		}else if (c == '.' && firstDecimalCheck == false) {
+    			throw new NumericOnlyException("Non-numeric value entered. Please only enter numeric values with a single decimal");
+    		}
+    	}
 	}
 
 }
