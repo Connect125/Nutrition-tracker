@@ -35,10 +35,18 @@ public class Meals extends Meal {
 	}
 	
 	public double AverageCalories() {
-		return 0;
+		double totalCalories = 0;
+		double averageCalories = 0;
+		
+		totalCalories = TotalCalories(); //using the Totalcalories method to find total calories
+		
+		averageCalories = totalCalories/Meals.size(); //Divide total calories by Meals list size to find the average per daily meal
+		
+		return averageCalories;
 	}
 	
 	public double HighCalories() {
+		
 		return 0;
 	}
 	
@@ -47,7 +55,18 @@ public class Meals extends Meal {
 	}
 	
 	public double TotalCalories() {
-		return 0;
+		double totalCalories = 0;
+		double averageCalories = 0;
+		
+		double caloriesBreakfast = Meals.get(0).getCalories();
+		double caloriesLunch = Meals.get(1).getCalories();
+		double caloriesDinner = Meals.get(2).getCalories();
+		double caloriesSnack1 = Meals.get(3).getCalories();
+		double caloriesSnack2 = Meals.get(4).getCalories();
+		
+		totalCalories = caloriesBreakfast + caloriesLunch + caloriesDinner + caloriesSnack1 + caloriesSnack2; //add all calories from throughout the day together to find the total
+		
+		return totalCalories;
 	}
 
 }
