@@ -154,6 +154,13 @@ public class Nutrients {
 		return calculatedTotal;
 	}
 	
+	/**
+	 * Checks if the string passed to it is actually a number
+	 * @param valueAsString
+	 * A value stored in a string
+	 * @throws NumericOnlyException
+	 * If the value is non-numeric or has multiple decimals it throws an NumericOnlyException
+	 */
 	public void numericOnlyCheck (String valueAsString) throws NumericOnlyException {
 		//Code adapting from my own coding challenges originally helped, and inspired by video content created by Nathaly Verwaal
 //------------------------------------------------------------------------------------------------------------
