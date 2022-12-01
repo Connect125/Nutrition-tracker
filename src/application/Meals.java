@@ -2,6 +2,7 @@ package application;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class Meals extends Meal {
 	private String name;
@@ -33,6 +34,31 @@ public class Meals extends Meal {
 		Meals.add(dinnerMeal);
 		Meals.add(snack1Meal);
 		Meals.add(snack2Meal);
+	}
+	
+	/**
+	 * Creates a list of all calories from the meals list
+	 * @return
+	 * Returns a list of all calories from the separate meals.
+	 */
+	public String[] getNameList() {
+		//get all calories from the Meals list
+		String nameBreakfast = Meals.get(0).getMealName();
+		String nameLunch = Meals.get(1).getMealName();
+		String nameDinner = Meals.get(2).getMealName();
+		String nameSnack1 = Meals.get(3).getMealName();
+		String nameSnack2 = Meals.get(4).getMealName();
+		
+		String[] nameList = new String[5];
+		
+		//Add all calories to the list
+		nameList[0] = nameBreakfast;
+		nameList[1] = nameLunch;
+		nameList[2] = nameDinner;
+		nameList[3] = nameSnack1;
+		nameList[4] = nameSnack2;
+		
+		return nameList;
 	}
 	
 	/**
@@ -321,6 +347,80 @@ public class Meals extends Meal {
 		totalFat = fatBreakfast + fatLunch + fatDinner + fatSnack1 + fatSnack2; //add all fat from throughout the day together to find the total
 		
 		return totalFat;
+	}
+	
+	/**
+	 * Looks through the list of Meals and returns the most common name not case sensitive 
+	 * @param mealNames
+	 * A list of strings containing five meal names
+	 * @return
+	 * a string containing the most common meal name
+	 */
+	public String mostCommonMeal() {
+		//Setting up local variables
+		int index1 = 0;
+		int index2 = 0;
+		int index3 = 0;
+		
+		int occurrences0 = 0;
+		int occurrences1 = 0;
+		int occurrences2 = 0;
+		int occurrences3 = 0;
+		int occurrences4 = 0;
+		
+		String[] mealNames = new String[5];
+		
+		mealNames = getNameList();
+		
+		ArrayList<String> names = new ArrayList<String>();
+		
+		
+		
+		//Adds the the names from mealNames array to names ArrayList
+		while (index3 < mealNames.length) {
+			names.add(mealNames[index3].toUpperCase());
+			index3++;
+		}
+		//Each if statement is for a different name. The loop counts the number of occurrences each name has within it's own list
+		while (index2 < mealNames.length) {
+			while (index1 < mealNames.length) {
+				if (mealNames[index2].toUpperCase().contains(mealNames[index1].toUpperCase()) && index2 == 0){
+					occurrences0 = Collections.frequency(names, mealNames[index2].toUpperCase());
+				}
+				if (mealNames[index2].toUpperCase().contains(mealNames[index1].toUpperCase()) && index2 == 1){
+					occurrences1 = Collections.frequency(names, mealNames[index2].toUpperCase());
+				}
+				if (mealNames[index2].toUpperCase().contains(mealNames[index1].toUpperCase()) && index2 == 2){
+					occurrences2 = Collections.frequency(names, mealNames[index2].toUpperCase());
+				}
+				if (mealNames[index2].toUpperCase().contains(mealNames[index1].toUpperCase()) && index2 == 3){
+					occurrences3 = Collections.frequency(names, mealNames[index2].toUpperCase());
+				}
+				if (mealNames[index2].toUpperCase().contains(mealNames[index1].toUpperCase()) && index2 == 4){
+					occurrences4 = Collections.frequency(names, mealNames[index2].toUpperCase());
+				}
+				index1++;
+			}
+			index1 = 0;
+			index2++;
+		}
+		
+		//Creates a new list with the values from the previous loop
+		int[] mealOccurrences = new int[5];
+		
+		mealOccurrences[0] = occurrences0;
+		mealOccurrences[1] = occurrences1;
+		mealOccurrences[2] = occurrences2;
+		mealOccurrences[3] = occurrences3;
+		mealOccurrences[4] = occurrences4;
+		
+		int largest = 0;
+		for (int i = 1; i < mealOccurrences.length; i++) { //Searches for the index of the largest value in the list
+			if (mealOccurrences[i] > largest) largest = i;
+		}
+				
+		//returns the String from the location the largest number of occurrences was found in the previous for loop.
+		return mealNames[largest];
 	}
 
 }
