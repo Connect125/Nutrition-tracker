@@ -1,6 +1,7 @@
 package application;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Meals extends Meal {
 	private String name;
@@ -34,27 +35,65 @@ public class Meals extends Meal {
 		Meals.add(snack2Meal);
 	}
 	
-	public double AverageCalories() {
+	public double[] getCaloriesList() {
+		//get all calories from the Meals list
+		double caloriesBreakfast = Meals.get(0).getCalories();
+		double caloriesLunch = Meals.get(1).getCalories();
+		double caloriesDinner = Meals.get(2).getCalories();
+		double caloriesSnack1 = Meals.get(3).getCalories();
+		double caloriesSnack2 = Meals.get(4).getCalories();
+		
+		double[] caloriesList = new double[5];
+		
+		//Add all calories to the list
+		caloriesList[0] = caloriesBreakfast;
+		caloriesList[1] = caloriesLunch;
+		caloriesList[2] = caloriesDinner;
+		caloriesList[3] = caloriesSnack1;
+		caloriesList[4] = caloriesSnack2;
+		
+		return caloriesList;
+	}
+	
+	
+	public double FindAverageCalories() {
 		double totalCalories = 0;
 		double averageCalories = 0;
 		
-		totalCalories = TotalCalories(); //using the Totalcalories method to find total calories
+		totalCalories = FindTotalCalories(); //using the FindTotalCalories method to find total calories
 		
 		averageCalories = totalCalories/Meals.size(); //Divide total calories by Meals list size to find the average per daily meal
 		
 		return averageCalories;
 	}
 	
-	public double HighCalories() {
+	public double FindHighCalories() {
+		double highCalories = 0;
 		
-		return 0;
+		double[] list = new double[5];
+		
+		list = getCaloriesList();
+		Arrays.sort(list);
+		
+		highCalories = list[list.length-1]; //setting the high value for returning
+		
+		return highCalories;
 	}
 	
-	public double LowCalories() {
-		return 0;
+	public double FindLowCalories() {
+		double lowCalories = 0;
+		
+		double[] list = new double[5];
+		
+		list = getCaloriesList();
+		Arrays.sort(list);
+		
+		lowCalories = list[0]; //setting the low value for returning
+		
+		return lowCalories;
 	}
 	
-	public double TotalCalories() {
+	public double FindTotalCalories() {
 		double totalCalories = 0;
 		double averageCalories = 0;
 		
