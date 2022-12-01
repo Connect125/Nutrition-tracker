@@ -180,5 +180,147 @@ public class Meals extends Meal {
 		
 		return totalCalories;
 	}
+	
+	/**
+	 * Find the average number of Salt consumed per meal throughout the day
+	 * @return
+	 * The value for the average Salt per meal
+	 */
+	public double AverageSalt() {
+		double totalSalt = 0;
+		double averageSalt = 0;
+		
+		totalSalt = FindTotalSalt(); //using the FindTotalSalt method to find total Salt
+		
+		averageSalt = totalSalt/Meals.size(); //Divide total Salt by Meals list size to find the average per daily meal
+		
+		return averageSalt;
+	}
+	
+	/**
+	 * Finds the meal the largest number of Salt consumed
+	 * @return
+	 * the largest Salt value
+	 */
+	public double FindHighSalt() {
+		double highSalt = 0;
+		
+		double[] list = new double[5];
+		
+		list = getSaltList();
+		Arrays.sort(list);
+		
+		highSalt = list[list.length-1]; //setting the high value for returning
+		
+		return highSalt;
+	}
+	
+	/**
+	 * Finds the the meal with the lowest number of salt
+	 * @return
+	 * the lowest salt value
+	 */
+	public double FindLowSalt() {
+		double lowSalt = 0;
+		
+		double[] list = new double[5];
+		
+		list = getSaltList();
+		Arrays.sort(list);
+		
+		lowSalt = list[0]; //setting the low value for returning
+		
+		return lowSalt;
+	}
+	
+	/**
+	 * Find the total amount of salt consumed in a day
+	 * @return
+	 * Returns the total number of salt
+	 */
+	public double FindTotalSalt() {
+		double totalSalt = 0;
+		
+		double saltBreakfast = Meals.get(0).getSalt();
+		double saltLunch = Meals.get(1).getSalt();
+		double saltDinner = Meals.get(2).getSalt();
+		double saltSnack1 = Meals.get(3).getSalt();
+		double saltSnack2 = Meals.get(4).getSalt();
+		
+		totalSalt = saltBreakfast + saltLunch + saltDinner + saltSnack1 + saltSnack2; //add all salt from throughout the day together to find the total
+		
+		return totalSalt;
+	}
+	
+	/**
+	 * Find the average number of fat consumed per meal throughout the day
+	 * @return
+	 * The value for the average fat per meal
+	 */
+	public double AverageFat() {
+		double totalFat = 0;
+		double averageFat = 0;
+		
+		totalFat = FindTotalSalt(); //using the FindTotalfat method to find total fat
+		
+		averageFat = totalFat/Meals.size(); //Divide total fat by Meals list size to find the average per daily meal
+		
+		return averageFat;
+	}
+	
+	/**
+	 * Finds the meal the largest number of fat consumed
+	 * @return
+	 * the largest fat value
+	 */
+	public double FindHighFat() {
+		double highFat = 0;
+		
+		double[] list = new double[5];
+		
+		list = getFatList();
+		Arrays.sort(list);
+		
+		highFat = list[list.length-1]; //setting the high value for returning
+		
+		return highFat;
+	}
+	
+	/**
+	 * Finds the the meal with the lowest number of fat
+	 * @return
+	 * the lowest fat value
+	 */
+	public double FindLowFat() {
+		double lowFat = 0;
+		
+		double[] list = new double[5];
+		
+		list = getFatList();
+		Arrays.sort(list);
+		
+		lowFat = list[0]; //setting the low value for returning
+		
+		return lowFat;
+	}
+	
+	/**
+	 * Find the total amount of fat consumed in a day
+	 * @return
+	 * Returns the total number of fat
+	 */
+	public double FindTotalFat() {
+		double totalFat = 0;
+		
+		double fatBreakfast = Meals.get(0).getFat();
+		double fatLunch = Meals.get(1).getFat();
+		double fatDinner = Meals.get(2).getFat();
+		double fatSnack1 = Meals.get(3).getFat();
+		double fatSnack2 = Meals.get(4).getFat();
+		
+		totalFat = fatBreakfast + fatLunch + fatDinner + fatSnack1 + fatSnack2; //add all fat from throughout the day together to find the total
+		
+		return totalFat;
+	}
 
 }
