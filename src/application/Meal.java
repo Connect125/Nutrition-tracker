@@ -7,17 +7,17 @@ public class Meal {
 	private double mealSalt;
 	private double mealFat;
 
-	public Meal() {
-		
+	public Meal() { //default constructor
 	}
-	public Meal(String name, String calories, String salt, String fat) throws NumericOnlyException {
+	
+	public Meal(String name, String calories, String salt, String fat) throws NumericOnlyException { //main constructor
 		//Creates new strings to break references
 		String encapsulationMealName = new String();
 		String encapsulationCalories = new String();
 		String encapsulationSalt = new String();
 		String encapsulationFat = new String();
 		
-		//checks if the strings that repersent values are actually values if not throws NumericOnlyException
+		//checks if the strings that represents values are actually values if not throws NumericOnlyException
 		numericOnlyCheck(calories);
 		numericOnlyCheck(salt);
 		numericOnlyCheck(fat);
