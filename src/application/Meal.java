@@ -59,5 +59,41 @@ public class Meal {
     	}
 //--------------------------------------------------------------------------------------------------------------
 	}
+	
+	public String getMealName() {
+		return mealName;
+	}
+	
+	public void setMealName(String name) {
+		mealName = name;
+	}
+	
+	public double getCalories() {
+		return mealCalories;
+	}
+	
+	public void setMealName(double calories) {
+		mealCalories = calories;
+	}
+	
+	public double getSalt() {
+		return mealSalt;
+	}
+	
+	public void setSalt(double salt) {
+		mealSalt = salt;
+	}
+	
+	public double getFat() {
+		return mealFat;
+	}
+	
+	public void setFat(double fat) {
+		mealFat = fat;
+	}
+	
+	
+	
+	
 
 }
