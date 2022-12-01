@@ -10,7 +10,19 @@ public class MealName {
 	private String snack1Name;
 	private String snack2Name;
 	
-
+	/**
+	 * Creates a mealName object after you pass it a string representing the name of a meal for each breakfast, lunch, dinner, snack1, and snack2 in that order.
+	 * @param breakfast
+	 * A string representing the name of the meal you had for breakfast
+	 * @param lunch
+	 * A string representing the name of the meal you had for lunch
+	 * @param dinner
+	 * A string representing the name of the meal you had for dinner
+	 * @param snack1
+	 * A string representing the name of the meal you had for you first snack
+	 * @param snack2
+	 * A string representing the name of the meal you had for your second snack
+	 */
 	public MealName(String breakfast, String lunch, String dinner, String snack1, String snack2) {
 		String encapsulationBreakFast = new String();
 		String encapsulationLunch = new String();
@@ -30,7 +42,11 @@ public class MealName {
 		snack1Name = encapsulationSnack1;
 		snack2Name = encapsulationSnack2;
 	}
-	
+	/**
+	 * Creates a list of meal names and returns the list
+	 * @return
+	 * returns a list of strings containing all the meals from the day
+	 */
 	public String[] getNameList() {
 		String[] nameList = new String[5];
 		
@@ -43,6 +59,13 @@ public class MealName {
 		return nameList;
 	}
 	
+	/**
+	 * Looks through the list of meals and returns the most common name not case sensitive 
+	 * @param mealNames
+	 * A list of strings containing five meal names
+	 * @return
+	 * a string containing the most common meal name
+	 */
 	public String mostCommonMeal(String[] mealNames) {
 		int index1 = 0;
 		int index2 = 0;

@@ -125,6 +125,6 @@
             </Label>
          </children>
       </HBox>
-      <Button mnemonicParsing="false" onAction="#switchToMainScreen" text="Done/Return To Main" />
+      <Button mnemonicParsing="false" onAction="#switchToMainScreen" text="Return To Main" />
    </children>
 </VBox>

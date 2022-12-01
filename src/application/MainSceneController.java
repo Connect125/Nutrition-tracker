@@ -39,7 +39,12 @@ public class MainSceneController {
 	private Label averageCalories;
 
 
-	
+	/**
+	 * Allows the user to switch scenes to the data entry scene
+	 * @param event
+	 * Is triggered by clicking the "Enter Nutritional Data" button
+	 * @throws IOException
+	 */
 	public void switchToNutritionDataEntry(ActionEvent event) throws IOException{
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("NutritionDataEntry.fxml"));
