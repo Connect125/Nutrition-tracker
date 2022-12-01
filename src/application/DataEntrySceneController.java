@@ -155,91 +155,130 @@ public class DataEntrySceneController {
 		//String for Most Common Meal Name
 		String mostCommonMealDisplay = new String("NA");
 		
-		//Creating new Nutrient object for calories, finding the average value, high value, low value, and total value. Each will then be assigned to a string
-		//for updating the display
-		//if statement checks for null values and prompts the user to remove them.
-		if (breakfastCalories.getText().trim().isEmpty() || lunchCalories.getText().trim().isEmpty() || dinnerCalories.getText().trim().isEmpty() 
-				|| snack1Calories.getText().trim().isEmpty() || snack2Calories.getText().trim().isEmpty()) {
+		//Checks for null values and prompts the user to remove them.
+		if (breakfastCalories.getText().trim().isEmpty() || breakfastSalt.getText().trim().isEmpty() || breakfastFat.getText().trim().isEmpty()) {
 			errorDectected = true;
 			dataEntryErrorLabel.setText("Non-numeric value entered in Calories column.");
 			dataEntryErrorLabel2.setText("Please enter a use 0 instead of leaving the cell empty.");
 			dataEntryErrorLabel.setTextFill(Color.RED);
 			dataEntryErrorLabel2.setTextFill(Color.RED);
-			}else {
-				try {
-					Nutrients calories = new Nutrients(breakfastCalories.getText(), lunchCalories.getText(), dinnerCalories.getText(), snack1Calories.getText(), snack2Calories.getText());
-					averageCaloriesDisplay = String.valueOf(calories.CalculateAverage(calories.getList())); 
-					highCaloriesDisplay = String.valueOf(calories.FindHighValue(calories.getList())); 
-					lowCaloriesDisplay = String.valueOf(calories.FindLowValue(calories.getList())); 
-					totalCaloriesDisplay = String.valueOf(calories.CalculateTotal(calories.getList())); 
-				}catch(NumericOnlyException e) {
-					errorDectected = true;
-					dataEntryErrorLabel.setText("Non-numeric value entered in Calories column.");
-					dataEntryErrorLabel2.setText("Please enter a numeric value with only one decimal.");
-					dataEntryErrorLabel.setTextFill(Color.RED);
-					dataEntryErrorLabel2.setTextFill(Color.RED);
-				}
+		}else {
+			try {
+				Meal breakfast = new Meal(breakfastName.getText(), breakfastCalories.getText(), breakfastSalt.getText(), breakfastFat.getText());
+			}catch(NumericOnlyException e){ // if non-numeric error during creation of Meal inform user, and prompt to fix.
+				errorDectected = true;
+				dataEntryErrorLabel.setText("Non-numeric value entered in Breakfast Row.");
+				dataEntryErrorLabel2.setText("Please enter a numeric value with only one decimal.");
+				dataEntryErrorLabel.setTextFill(Color.RED);
+				dataEntryErrorLabel2.setTextFill(Color.RED);
 			}
+		}
 		
-		//Creating new Nutrient object for calories, finding the average value, high value, low value, and total value. Each will then be assigned to a string
-		//for updating the display
-		//if statement checks for null values and prompts the user to remove them.
-		if (breakfastSalt.getText().trim().isEmpty() || lunchSalt.getText().trim().isEmpty() || dinnerSalt.getText().trim().isEmpty() 
-				|| snack1Salt.getText().trim().isEmpty() || snack2Salt.getText().trim().isEmpty()) {
+		//Checks for null values and prompts the user to remove them.
+		if (lunchCalories.getText().trim().isEmpty() || lunchSalt.getText().trim().isEmpty() || lunchFat.getText().trim().isEmpty()) {
 			errorDectected = true;
-			dataEntryErrorLabel.setText("Non-numeric value entered in Salt column.");
+			dataEntryErrorLabel.setText("Non-numeric value entered in Lunch Row.");
 			dataEntryErrorLabel2.setText("Please enter a use 0 instead of leaving the cell empty.");
 			dataEntryErrorLabel.setTextFill(Color.RED);
 			dataEntryErrorLabel2.setTextFill(Color.RED);
-			}else {
-				try {
-					Nutrients salt = new Nutrients(breakfastSalt.getText(), lunchSalt.getText(), dinnerSalt.getText(), snack1Salt.getText(), snack2Salt.getText());
-					averageSaltDisplay = String.valueOf(salt.CalculateAverage(salt.getList())); 
-					highSaltDisplay = String.valueOf(salt.FindHighValue(salt.getList())); 
-					lowSaltDisplay = String.valueOf(salt.FindLowValue(salt.getList())); 
-					totalSaltDisplay = String.valueOf(salt.CalculateTotal(salt.getList())); 
-				}catch(NumericOnlyException e) {
-					errorDectected = true;
-					dataEntryErrorLabel.setText("Non-numeric value entered in Salt column.");
-					dataEntryErrorLabel2.setText("Please enter a numeric value with only one decimal.");
-					dataEntryErrorLabel.setTextFill(Color.RED);
-					dataEntryErrorLabel2.setTextFill(Color.RED);
-				}
+		}else {
+			try {
+				Meal lunch = new Meal(lunchName.getText(), lunchCalories.getText(), lunchSalt.getText(), lunchFat.getText());
+			}catch(NumericOnlyException e){ // if non-numeric error during creation of Meal inform user, and prompt to fix.
+				errorDectected = true;
+				dataEntryErrorLabel.setText("Non-numeric value entered in Lunch Row.");
+				dataEntryErrorLabel2.setText("Please enter a numeric value with only one decimal.");
+				dataEntryErrorLabel.setTextFill(Color.RED);
+				dataEntryErrorLabel2.setTextFill(Color.RED);
 			}
-		//Creating new Nutrient object for calories, finding the average value, high value, low value, and total value. Each will then be assigned to a string
-		//for updating the display
-		//if statement checks for null values and prompts the user to remove them.
-		if (breakfastFat.getText().trim().isEmpty() || lunchFat.getText().trim().isEmpty() || dinnerFat.getText().trim().isEmpty() 
-				|| snack1Fat.getText().trim().isEmpty() || snack2Fat.getText().trim().isEmpty()) {
+		}
+		
+		//Checks for null values and prompts the user to remove them.
+		if (dinnerCalories.getText().trim().isEmpty() || dinnerSalt.getText().trim().isEmpty() || dinnerFat.getText().trim().isEmpty()) {
 			errorDectected = true;
-			dataEntryErrorLabel.setText("Non-numeric value entered in Fat column.");
+			dataEntryErrorLabel.setText("Non-numeric value entered in Dinner Row.");
 			dataEntryErrorLabel2.setText("Please enter a use 0 instead of leaving the cell empty.");
 			dataEntryErrorLabel.setTextFill(Color.RED);
 			dataEntryErrorLabel2.setTextFill(Color.RED);
-			}else {
-				try {
-					Nutrients fat = new Nutrients(breakfastFat.getText(), lunchFat.getText(), dinnerFat.getText(), snack1Fat.getText(), snack2Fat.getText());
-					averageFatDisplay = String.valueOf(fat.CalculateAverage(fat.getList())); 
-					highFatDisplay = String.valueOf(fat.FindHighValue(fat.getList())); 
-					lowFatDisplay = String.valueOf(fat.FindLowValue(fat.getList())); 
-					totalFatDisplay = String.valueOf(fat.CalculateTotal(fat.getList())); 
-				}catch(NumericOnlyException e) {
-					errorDectected = true;
-					dataEntryErrorLabel.setText("Non-numeric value entered in Fat column.");
-					dataEntryErrorLabel2.setText("Please enter a numeric value with only one decimal.");
-					dataEntryErrorLabel.setTextFill(Color.RED);
-					dataEntryErrorLabel2.setTextFill(Color.RED);
-				}
+		}else {
+			try {
+				Meal dinner = new Meal(dinnerName.getText(), dinnerCalories.getText(), dinnerSalt.getText(), dinnerFat.getText());
+			}catch(NumericOnlyException e){ // if non-numeric error during creation of Meal inform user, and prompt to fix.
+				errorDectected = true;
+				dataEntryErrorLabel.setText("Non-numeric value entered in Dinner Row.");
+				dataEntryErrorLabel2.setText("Please enter a numeric value with only one decimal.");
+				dataEntryErrorLabel.setTextFill(Color.RED);
+				dataEntryErrorLabel2.setTextFill(Color.RED);
 			}
+		}
 		
-		//Creating new MealName object
-		MealName meals = new MealName(breakfastName.getText(), lunchName.getText(), dinnerName.getText(), snack1Name.getText(), snack2Name.getText());
+		//Checks for null values and prompts the user to remove them.
+		if (snack1Calories.getText().trim().isEmpty() || snack1Salt.getText().trim().isEmpty() || snack1Fat.getText().trim().isEmpty()) {
+			errorDectected = true;
+			dataEntryErrorLabel.setText("Non-numeric value entered in Snack1 Row.");
+			dataEntryErrorLabel2.setText("Please enter a use 0 instead of leaving the cell empty.");
+			dataEntryErrorLabel.setTextFill(Color.RED);
+			dataEntryErrorLabel2.setTextFill(Color.RED);
+		}else {
+			try {
+				Meal snack1 = new Meal(snack1Name.getText(), snack1Calories.getText(), snack1Salt.getText(), snack1Fat.getText());
+			}catch(NumericOnlyException e){ // if non-numeric error during creation of Meal inform user, and prompt to fix.
+				errorDectected = true;
+				dataEntryErrorLabel.setText("Non-numeric value entered in Snack1 Row.");
+				dataEntryErrorLabel2.setText("Please enter a numeric value with only one decimal.");
+				dataEntryErrorLabel.setTextFill(Color.RED);
+				dataEntryErrorLabel2.setTextFill(Color.RED);
+			}
+		}
 		
-		//Getting meal name info
-		mostCommonMealDisplay = meals.mostCommonMeal(meals.getNameList());
+		//Checks for null values and prompts the user to remove them.
+		if (snack2Calories.getText().trim().isEmpty() || snack2Salt.getText().trim().isEmpty() || snack2Fat.getText().trim().isEmpty()) {
+			errorDectected = true;
+			dataEntryErrorLabel.setText("Non-numeric value entered in Snack2 Row.");
+			dataEntryErrorLabel2.setText("Please enter a use 0 instead of leaving the cell empty.");
+			dataEntryErrorLabel.setTextFill(Color.RED);
+			dataEntryErrorLabel2.setTextFill(Color.RED);
+		}else {
+			try {
+				Meal snack2 = new Meal(snack2Name.getText(), snack2Calories.getText(), snack2Salt.getText(), snack2Fat.getText());
+			}catch(NumericOnlyException e){ // if non-numeric error during creation of Meal inform user, and prompt to fix.
+				errorDectected = true;
+				dataEntryErrorLabel.setText("Non-numeric value entered in Snack2 Row.");
+				dataEntryErrorLabel2.setText("Please enter a numeric value with only one decimal.");
+				dataEntryErrorLabel.setTextFill(Color.RED);
+				dataEntryErrorLabel2.setTextFill(Color.RED);
+			}
+		}
 		
-		//Passes all the data entered to the Statistics scene for display to user. If statement checks if an error has occurred and skips changing scene if so.
+		//Creating the Meals list
 		if (errorDectected == false) {
+			Meals dayOne = new Meals("DayOne", breakfast, lunch, dinner, snack1, snack2);
+			
+			//Getting meal name display info
+			mostCommonMealDisplay = dayOne.mostCommonMeal();
+			
+			//Getting average Display info
+			averageCaloriesDisplay = String.valueOf(dayOne.FindAverageCalories());
+			averageSaltDisplay = String.valueOf(dayOne.AverageSalt());
+			averageFatDisplay = String.valueOf(dayOne.AverageFat());
+			
+			
+			//Getting high display info
+			highCaloriesDisplay = String.valueOf(dayOne.FindHighCalories()); 
+			highSaltDisplay = String.valueOf(dayOne.FindHighSalt()); 
+			highFatDisplay = String.valueOf(dayOne.FindHighFat()); 
+			
+			//Getting low display info
+			lowCaloriesDisplay = String.valueOf(dayOne.FindLowCalories());
+			lowSaltDisplay = String.valueOf(dayOne.FindLowSalt());
+			lowFatDisplay = String.valueOf(dayOne.FindLowFat());
+			
+			//Getting total display info
+			totalCaloriesDisplay = String.valueOf(dayOne.FindTotalCalories());
+			totalSaltDisplay = String.valueOf(dayOne.FindTotalSalt());
+			totalFatDisplay = String.valueOf(dayOne.FindTotalFat());
+			
+			//Passes all the data entered to the Statistics scene for display to user.
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("NutritionStatistics.fxml"));
 			root = loader.load();
 			
@@ -255,5 +294,7 @@ public class DataEntrySceneController {
 			scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();
-		}
-}}
+		
+			}
+	}
+}
