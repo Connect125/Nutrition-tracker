@@ -35,6 +35,11 @@ public class Meals extends Meal {
 		Meals.add(snack2Meal);
 	}
 	
+	/**
+	 * Creates a list of all calories from the meals list
+	 * @return
+	 * Returns a list of all calories from the separate meals.
+	 */
 	public double[] getCaloriesList() {
 		//get all calories from the Meals list
 		double caloriesBreakfast = Meals.get(0).getCalories();
@@ -55,7 +60,61 @@ public class Meals extends Meal {
 		return caloriesList;
 	}
 	
+	/**
+	 * Creates a list of all salt from the meals list
+	 * @return
+	 * Returns a list of all salt from the separate meals.
+	 */
+	public double[] getSaltList() {
+		//get all salt from the Meals list
+		double saltBreakfast = Meals.get(0).getSalt();
+		double saltLunch = Meals.get(1).getSalt();
+		double saltDinner = Meals.get(2).getSalt();
+		double saltSnack1 = Meals.get(3).getSalt();
+		double saltSnack2 = Meals.get(4).getSalt();
+		
+		double[] saltList = new double[5];
+		
+		//Add all salt to the list
+		saltList[0] = saltBreakfast;
+		saltList[1] = saltLunch;
+		saltList[2] = saltDinner;
+		saltList[3] = saltSnack1;
+		saltList[4] = saltSnack2;
+		
+		return saltList;
+	}
 	
+	/**
+	 * Creates a list of all fat from the meals list
+	 * @return
+	 * Returns a list of all fat from the separate meals.
+	 */
+	public double[] getFatList() {
+		//get all fat from the Meals list
+		double fatBreakfast = Meals.get(0).getFat();
+		double fatLunch = Meals.get(1).getFat();
+		double fatDinner = Meals.get(2).getFat();
+		double fatSnack1 = Meals.get(3).getFat();
+		double fatSnack2 = Meals.get(4).getFat();
+		
+		double[] fatList = new double[5];
+		
+		//Add all fat to the list
+		fatList[0] = fatBreakfast;
+		fatList[1] = fatLunch;
+		fatList[2] = fatDinner;
+		fatList[3] = fatSnack1;
+		fatList[4] = fatSnack2;
+		
+		return fatList;
+	}
+	
+	/**
+	 * Find the average number of calories consumed per meal throughout the day
+	 * @return
+	 * The value for the average calories per meal
+	 */
 	public double FindAverageCalories() {
 		double totalCalories = 0;
 		double averageCalories = 0;
@@ -67,6 +126,11 @@ public class Meals extends Meal {
 		return averageCalories;
 	}
 	
+	/**
+	 * Finds the meal the largest number of calories consumed
+	 * @return
+	 * the largest calorie value
+	 */
 	public double FindHighCalories() {
 		double highCalories = 0;
 		
@@ -80,6 +144,11 @@ public class Meals extends Meal {
 		return highCalories;
 	}
 	
+	/**
+	 * Finds the the meal with the lowest number of calories
+	 * @return
+	 * the lowest calorie value
+	 */
 	public double FindLowCalories() {
 		double lowCalories = 0;
 		
@@ -93,9 +162,13 @@ public class Meals extends Meal {
 		return lowCalories;
 	}
 	
+	/**
+	 * Find the total amount of calories consumed in a day
+	 * @return
+	 * Returns the total number of calories
+	 */
 	public double FindTotalCalories() {
 		double totalCalories = 0;
-		double averageCalories = 0;
 		
 		double caloriesBreakfast = Meals.get(0).getCalories();
 		double caloriesLunch = Meals.get(1).getCalories();
