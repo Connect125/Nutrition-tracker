@@ -1,6 +1,7 @@
 package application;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.LineNumberReader;
@@ -15,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class MainSceneController {
@@ -24,6 +26,9 @@ public class MainSceneController {
 	
 	@FXML
     private TextField fileReadName;
+	
+	@FXML
+    private Label fileNameErrorLabel;
 
 
 	/**
@@ -72,73 +77,82 @@ public class MainSceneController {
 		//String for Most Common Meal Name
 		String mostCommonMealDisplay = new String("NA");
 		
-		//Setting File name
-		fileName = fileReadName.getText();
-		
-		//Reading the file and setting the new values to their respective string
-		BufferedReader reader = new BufferedReader(new FileReader(fileName + ".txt"));
-		
-		//Skip first 2 lines nothing important
-		reader.readLine();
-		reader.readLine();
+		//Setting File name and checking if it exists if not prompt the user.
+		File f = new File(fileReadName.getText() + ".txt");
+		if (f.exists()) {
+			fileName = fileReadName.getText();
+			
+			//Reading the file and setting the new values to their respective string
+			BufferedReader reader = new BufferedReader(new FileReader(fileName + ".txt"));
+			
+			//Skip first 2 lines nothing important
+			reader.readLine();
+			reader.readLine();
 
-		String line = reader.readLine();
-		
-		//looks for a character pattern that matches the specified pattern then if found assigns the values
-		Pattern caloriesPattern = Pattern.compile("(\t)(.*?)(\t)(.*?)(\t)(.*?)(\t)(.*?)(\t)");
-		Matcher m1 = caloriesPattern.matcher(line);
-		if (m1.find()) {
-			averageCaloriesDisplay = m1.group(2);
-			highCaloriesDisplay = m1.group(4);
-			lowCaloriesDisplay = m1.group(6);
-			totalCaloriesDisplay = m1.group(8);
+			String line = reader.readLine();
+			
+			//looks for a character pattern that matches the specified pattern then if found assigns the values
+			Pattern caloriesPattern = Pattern.compile("(\t)(.*?)(\t)(.*?)(\t)(.*?)(\t)(.*?)(\t)");
+			Matcher m1 = caloriesPattern.matcher(line);
+			if (m1.find()) {
+				averageCaloriesDisplay = m1.group(2);
+				highCaloriesDisplay = m1.group(4);
+				lowCaloriesDisplay = m1.group(6);
+				totalCaloriesDisplay = m1.group(8);
+			}
+			
+			//Setting salt strings for display
+			Pattern saltFatPattern = Pattern.compile("(\t)(\t)(.*?)(\t)(.*?)(\t)(.*?)(\t)(.*?)(\t)");
+			line = reader.readLine();
+			m1 = saltFatPattern.matcher(line);
+			if (m1.find()) {
+				averageSaltDisplay = m1.group(3);
+				highSaltDisplay = m1.group(5);
+				lowSaltDisplay = m1.group(7);
+				totalSaltDisplay = m1.group(9);
+			}
+			
+			//Setting Fat strings for display
+			line = reader.readLine();
+			m1 = saltFatPattern.matcher(line);
+			if (m1.find()) {
+				averageFatDisplay = m1.group(3);
+				highFatDisplay = m1.group(5);
+				lowFatDisplay = m1.group(7);
+				totalFatDisplay = m1.group(9);
+			}
+			
+			//Setting Common Name string for display
+			line = reader.readLine();
+			Pattern namePattern = Pattern.compile("(: )(.*?)(\t)");
+			m1 = namePattern.matcher(line);
+			if (m1.find()) {
+				mostCommonMealDisplay = m1.group(2);
+			}
+			reader.close();
+			
+			//Pass values to Statistics scene and load new scene
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("NutritionStatistics.fxml"));
+			root = loader.load();
+			
+			StatisticsSceneController StatisticsSceneController = loader.getController();
+			StatisticsSceneController.displayAverages(averageCaloriesDisplay,averageSaltDisplay,averageFatDisplay);
+			StatisticsSceneController.displayHighs(highCaloriesDisplay,highSaltDisplay,highFatDisplay);
+			StatisticsSceneController.displayLows(lowCaloriesDisplay,lowSaltDisplay,lowFatDisplay);
+			StatisticsSceneController.displayTotals(totalCaloriesDisplay,totalSaltDisplay,totalFatDisplay);
+			StatisticsSceneController.displayMealNames(mostCommonMealDisplay);
+			
+			stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+			scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
+		}else {
+			fileNameErrorLabel.setText("No file named " + fileReadName.getText() + ".txt" + " could be found.");
+			fileNameErrorLabel.setTextFill(Color.RED);
 		}
 		
-		//Setting salt strings for display
-		Pattern saltFatPattern = Pattern.compile("(\t)(\t)(.*?)(\t)(.*?)(\t)(.*?)(\t)(.*?)(\t)");
-		line = reader.readLine();
-		m1 = saltFatPattern.matcher(line);
-		if (m1.find()) {
-			averageSaltDisplay = m1.group(3);
-			highSaltDisplay = m1.group(5);
-			lowSaltDisplay = m1.group(7);
-			totalSaltDisplay = m1.group(9);
-		}
 		
-		//Setting Fat strings for display
-		line = reader.readLine();
-		m1 = saltFatPattern.matcher(line);
-		if (m1.find()) {
-			averageFatDisplay = m1.group(3);
-			highFatDisplay = m1.group(5);
-			lowFatDisplay = m1.group(7);
-			totalFatDisplay = m1.group(9);
-		}
 		
-		//Setting Common Name string for display
-		line = reader.readLine();
-		Pattern namePattern = Pattern.compile("(: )(.*?)(\t)");
-		m1 = namePattern.matcher(line);
-		if (m1.find()) {
-			mostCommonMealDisplay = m1.group(2);
-		}
-		reader.close();
-		
-		//Pass values to Statistics scene and load new scene
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("NutritionStatistics.fxml"));
-		root = loader.load();
-		
-		StatisticsSceneController StatisticsSceneController = loader.getController();
-		StatisticsSceneController.displayAverages(averageCaloriesDisplay,averageSaltDisplay,averageFatDisplay);
-		StatisticsSceneController.displayHighs(highCaloriesDisplay,highSaltDisplay,highFatDisplay);
-		StatisticsSceneController.displayLows(lowCaloriesDisplay,lowSaltDisplay,lowFatDisplay);
-		StatisticsSceneController.displayTotals(totalCaloriesDisplay,totalSaltDisplay,totalFatDisplay);
-		StatisticsSceneController.displayMealNames(mostCommonMealDisplay);
-		
-		stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
 	}
 	
 	

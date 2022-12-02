@@ -18,6 +18,7 @@
             <TextField fx:id="fileReadName" />
          </children>
       </HBox>
+      <Label fx:id="fileNameErrorLabel" />
       <Label text="Files should only be '.txt' files generated from" />
       <Label text="previously using this application. Don't inlcude " />
       <Label text="the '.txt' at the end of the file name" />
