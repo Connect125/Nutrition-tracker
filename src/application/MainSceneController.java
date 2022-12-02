@@ -60,6 +60,53 @@ public class MainSceneController {
 		stage.show();
 	}
 	
+	public void loadFileSwitchToStatisticsScene(ActionEvent event) throws IOException{
+			
+		//Strings for averages
+		String averageCaloriesDisplay = new String("NA");
+		String averageSaltDisplay = new String("NA");
+		String averageFatDisplay = new String("NA");
+				
+		//Strings for highs
+		String highCaloriesDisplay = new String("NA");
+		String highSaltDisplay = new String("NA");
+		String highFatDisplay = new String("NA");
+				
+		//Strings for lows
+		String lowCaloriesDisplay = new String("NA");
+		String lowSaltDisplay = new String("NA");
+		String lowFatDisplay = new String("NA");
+				
+		//Strings for Totals
+		String totalCaloriesDisplay = new String("NA");
+		String totalSaltDisplay = new String("NA");
+		String totalFatDisplay = new String("NA");
+				
+		//String for Most Common Meal Name
+		String mostCommonMealDisplay = new String("NA");
+		
+		//Reading the file and setting the new values to their respective string
+		
+		
+		
+		//Pass values to Statistics scene and load new scene
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("NutritionStatistics.fxml"));
+		root = loader.load();
+		
+		StatisticsSceneController StatisticsSceneController = loader.getController();
+		StatisticsSceneController.displayAverages(averageCaloriesDisplay,averageSaltDisplay,averageFatDisplay);
+		StatisticsSceneController.displayHighs(highCaloriesDisplay,highSaltDisplay,highFatDisplay);
+		StatisticsSceneController.displayLows(lowCaloriesDisplay,lowSaltDisplay,lowFatDisplay);
+		StatisticsSceneController.displayTotals(totalCaloriesDisplay,totalSaltDisplay,totalFatDisplay);
+		StatisticsSceneController.displayMealNames(mostCommonMealDisplay);
+		
+		
+		stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
+	
 	
 
 }

@@ -1,0 +1,6 @@
+Statistics
+	Average	High	Low	Total
+Calories	0.0	0.0	0.0	0.0	
+Salt		0.0	0.0	0.0	0.0	
+Fat		0.0	0.0	0.0	0.0	
+Most Common Meal: 0	
