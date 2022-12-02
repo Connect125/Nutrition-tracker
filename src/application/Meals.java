@@ -5,14 +5,19 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class Meals extends Meal {
-	private String name;
 	private ArrayList<Meal> Meals = new ArrayList<Meal>();
 	
-	
-	public Meals(String aName, Meal breakfast, Meal lunch, Meal dinner, Meal snack1, Meal snack2) {
+	/**
+	 * Standard Constructor for Meals
+	 * @param breakfast The meal you had first in the day
+	 * @param lunch The noon meal of the day
+	 * @param dinner The end of day meal
+	 * @param snack1 First lesser meal of the day
+	 * @param snack2 Second lesser meal of the day
+	 */
+	public Meals(Meal breakfast, Meal lunch, Meal dinner, Meal snack1, Meal snack2) {
 		
 		//creating new variables for encapsulation purposes
-		String mealsName = new String();
 		Meal breakfastMeal = new Meal();
 		Meal lunchMeal = new Meal();
 		Meal dinnerMeal = new Meal();
@@ -20,7 +25,6 @@ public class Meals extends Meal {
 		Meal snack2Meal = new Meal();
 		
 		//assigning encapsulation variables
-		mealsName = aName;
 		breakfastMeal = breakfast;
 		lunchMeal = lunch;
 		dinnerMeal = dinner;
@@ -28,7 +32,6 @@ public class Meals extends Meal {
 		snack2Meal = snack2;
 		
 		//assigning instance variables
-		name = mealsName;
 		Meals.add(breakfastMeal);
 		Meals.add(lunchMeal);
 		Meals.add(dinnerMeal);
@@ -287,7 +290,7 @@ public class Meals extends Meal {
 		double totalFat = 0;
 		double averageFat = 0;
 		
-		totalFat = FindTotalSalt(); //using the FindTotalfat method to find total fat
+		totalFat = FindTotalFat(); //using the FindTotalfat method to find total fat
 		
 		averageFat = totalFat/Meals.size(); //Divide total fat by Meals list size to find the average per daily meal
 		
@@ -375,13 +378,13 @@ public class Meals extends Meal {
 		ArrayList<String> names = new ArrayList<String>();
 		
 		
-		
 		//Adds the the names from mealNames array to names ArrayList
 		while (index3 < mealNames.length) {
 			names.add(mealNames[index3].toUpperCase());
 			index3++;
 		}
-		//Each if statement is for a different name. The loop counts the number of occurrences each name has within it's own list
+		
+		//Each if statement is for a different name(5 different names total). The loop counts the number of occurrences each name has within it's own list
 		while (index2 < mealNames.length) {
 			while (index1 < mealNames.length) {
 				if (mealNames[index2].toUpperCase().contains(mealNames[index1].toUpperCase()) && index2 == 0){
@@ -405,7 +408,7 @@ public class Meals extends Meal {
 			index2++;
 		}
 		
-		//Creates a new list with the values from the previous loop
+		//Creates a new list with the values from the previous loop in the same order as the names occurred.
 		int[] mealOccurrences = new int[5];
 		
 		mealOccurrences[0] = occurrences0;
