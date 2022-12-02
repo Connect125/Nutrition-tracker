@@ -23,25 +23,7 @@ public class MainSceneController {
 	private Parent root;
 	
 	@FXML
-    private TextField breakfastName;
-	
-	@FXML
-    private TextField lunchName;
-	
-	@FXML
-    private TextField dinnerName;
-	
-	@FXML
-    private TextField snack1Name;
-	
-	@FXML
-    private TextField snack2Name;
-	
-	@FXML
-    private TextField breakfastCalories;
-	
-	@FXML
-	private Label averageCalories;
+    private TextField fileReadName;
 
 
 	/**
@@ -64,6 +46,9 @@ public class MainSceneController {
 	
 	public void loadFileSwitchToStatisticsScene(ActionEvent event) throws IOException{
 			
+		//String for custom file name
+		String fileName = new String();
+		
 		//Strings for averages
 		String averageCaloriesDisplay = new String("NA");
 		String averageSaltDisplay = new String("NA");
@@ -87,8 +72,11 @@ public class MainSceneController {
 		//String for Most Common Meal Name
 		String mostCommonMealDisplay = new String("NA");
 		
+		//Setting File name
+		fileName = fileReadName.getText();
+		
 		//Reading the file and setting the new values to their respective string
-		BufferedReader reader = new BufferedReader(new FileReader("File.txt"));
+		BufferedReader reader = new BufferedReader(new FileReader(fileName + ".txt"));
 		
 		//Skip first 2 lines nothing important
 		reader.readLine();
@@ -134,6 +122,7 @@ public class MainSceneController {
 		if (m1.find()) {
 			mostCommonMealDisplay = m1.group(2);
 		}
+		reader.close();
 		
 		//Pass values to Statistics scene and load new scene
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("NutritionStatistics.fxml"));
