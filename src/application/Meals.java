@@ -7,7 +7,14 @@ import java.util.Collections;
 public class Meals extends Meal {
 	private ArrayList<Meal> Meals = new ArrayList<Meal>();
 	
-	
+	/**
+	 * Standard Constructor for Meals
+	 * @param breakfast The meal you had first in the day
+	 * @param lunch The noon meal of the day
+	 * @param dinner The end of day meal
+	 * @param snack1 First lesser meal of the day
+	 * @param snack2 Second lesser meal of the day
+	 */
 	public Meals(Meal breakfast, Meal lunch, Meal dinner, Meal snack1, Meal snack2) {
 		
 		//creating new variables for encapsulation purposes
@@ -371,13 +378,13 @@ public class Meals extends Meal {
 		ArrayList<String> names = new ArrayList<String>();
 		
 		
-		
 		//Adds the the names from mealNames array to names ArrayList
 		while (index3 < mealNames.length) {
 			names.add(mealNames[index3].toUpperCase());
 			index3++;
 		}
-		//Each if statement is for a different name. The loop counts the number of occurrences each name has within it's own list
+		
+		//Each if statement is for a different name(5 different names total). The loop counts the number of occurrences each name has within it's own list
 		while (index2 < mealNames.length) {
 			while (index1 < mealNames.length) {
 				if (mealNames[index2].toUpperCase().contains(mealNames[index1].toUpperCase()) && index2 == 0){
@@ -401,7 +408,7 @@ public class Meals extends Meal {
 			index2++;
 		}
 		
-		//Creates a new list with the values from the previous loop
+		//Creates a new list with the values from the previous loop in the same order as the names occurred.
 		int[] mealOccurrences = new int[5];
 		
 		mealOccurrences[0] = occurrences0;
