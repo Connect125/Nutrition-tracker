@@ -287,7 +287,7 @@ public class Meals extends Meal {
 		double totalFat = 0;
 		double averageFat = 0;
 		
-		totalFat = FindTotalSalt(); //using the FindTotalfat method to find total fat
+		totalFat = FindTotalFat(); //using the FindTotalfat method to find total fat
 		
 		averageFat = totalFat/Meals.size(); //Divide total fat by Meals list size to find the average per daily meal
 		
