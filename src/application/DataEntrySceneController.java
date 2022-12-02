@@ -325,7 +325,7 @@ public class DataEntrySceneController {
 			Meal snack2 = new Meal(snack2Name.getText(), snack2Calories.getText(), snack2Salt.getText(), snack2Fat.getText());
 			
 			//Creating the Meals object
-			Meals dayOne = new Meals("DayOne", breakfast, lunch, dinner, snack1, snack2);
+			Meals dayOne = new Meals(breakfast, lunch, dinner, snack1, snack2);
 			
 			//Getting meal name display info
 			mostCommonMealDisplay = dayOne.mostCommonMeal();
