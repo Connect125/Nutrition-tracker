@@ -125,7 +125,7 @@
             </Label>
          </children>
       </HBox>
-      <Button mnemonicParsing="false" text="Save Statistics to File" />
+      <Button mnemonicParsing="false" onAction="#saveFile" text="Save Statistics to File" />
       <Button mnemonicParsing="false" onAction="#switchToMainScreen" text="Return To Main" />
    </children>
 </VBox>

@@ -1,6 +1,9 @@
 package application;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -140,6 +143,13 @@ public class StatisticsSceneController {
 	 */
 	public void displayMealNames(String mostCommonMeal) {
 		mostCommonMealLabel.setText(mostCommonMeal);
+	}
+	
+	public void saveFile() throws IOException {
+		BufferedWriter writer = new BufferedWriter(new FileWriter("NutritionStatistics"));
+		PrintWriter pwriter = new PrintWriter(writer);
+		pwriter.println("Statistics");
+		pwriter.println("\tAverage\tHigh\tLow\tTotal" );
 	}
 	
 
