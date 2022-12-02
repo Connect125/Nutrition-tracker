@@ -1,6 +1,11 @@
 package application;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.LineNumberReader;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -50,9 +55,6 @@ public class MainSceneController {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("NutritionDataEntry.fxml"));
 		root = loader.load();
 		
-		DataEntrySceneController DataEntrySceneController = loader.getController();
-		DataEntrySceneController.displayDayNumber("Day #1");
-		
 		//root = FXMLLoader.load(getClass().getResource("NutritionDataEntry.fxml"));
 		stage = (Stage)((Node) event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
@@ -86,8 +88,52 @@ public class MainSceneController {
 		String mostCommonMealDisplay = new String("NA");
 		
 		//Reading the file and setting the new values to their respective string
+		BufferedReader reader = new BufferedReader(new FileReader("File.txt"));
 		
+		//Skip first 2 lines nothing important
+		reader.readLine();
+		reader.readLine();
+
+		String line = reader.readLine();
 		
+		//looks for a character pattern that matches the specified pattern then if found assigns the values
+		Pattern caloriesPattern = Pattern.compile("(\t)(.*?)(\t)(.*?)(\t)(.*?)(\t)(.*?)(\t)");
+		Matcher m1 = caloriesPattern.matcher(line);
+		if (m1.find()) {
+			averageCaloriesDisplay = m1.group(2);
+			highCaloriesDisplay = m1.group(4);
+			lowCaloriesDisplay = m1.group(6);
+			totalCaloriesDisplay = m1.group(8);
+		}
+		
+		//Setting salt strings for display
+		Pattern saltFatPattern = Pattern.compile("(\t)(\t)(.*?)(\t)(.*?)(\t)(.*?)(\t)(.*?)(\t)");
+		line = reader.readLine();
+		m1 = saltFatPattern.matcher(line);
+		if (m1.find()) {
+			averageSaltDisplay = m1.group(3);
+			highSaltDisplay = m1.group(5);
+			lowSaltDisplay = m1.group(7);
+			totalSaltDisplay = m1.group(9);
+		}
+		
+		//Setting Fat strings for display
+		line = reader.readLine();
+		m1 = saltFatPattern.matcher(line);
+		if (m1.find()) {
+			averageFatDisplay = m1.group(3);
+			highFatDisplay = m1.group(5);
+			lowFatDisplay = m1.group(7);
+			totalFatDisplay = m1.group(9);
+		}
+		
+		//Setting Common Name string for display
+		line = reader.readLine();
+		Pattern namePattern = Pattern.compile("(: )(.*?)(\t)");
+		m1 = namePattern.matcher(line);
+		if (m1.find()) {
+			mostCommonMealDisplay = m1.group(2);
+		}
 		
 		//Pass values to Statistics scene and load new scene
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("NutritionStatistics.fxml"));
@@ -99,7 +145,6 @@ public class MainSceneController {
 		StatisticsSceneController.displayLows(lowCaloriesDisplay,lowSaltDisplay,lowFatDisplay);
 		StatisticsSceneController.displayTotals(totalCaloriesDisplay,totalSaltDisplay,totalFatDisplay);
 		StatisticsSceneController.displayMealNames(mostCommonMealDisplay);
-		
 		
 		stage = (Stage)((Node) event.getSource()).getScene().getWindow();
 		scene = new Scene(root);

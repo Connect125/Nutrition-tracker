@@ -1,6 +1,6 @@
 Statistics
 	Average	High	Low	Total
-Calories	0.0	0.0	0.0	0.0	
-Salt		0.0	0.0	0.0	0.0	
-Fat		0.0	0.0	0.0	0.0	
-Most Common Meal: 0	
+Calories	1.0	2.0	3.0	4.0	
+Salt		5.0	6.0	7.0	8.0	
+Fat		9.0	10.0	11.0	12.0	
+Most Common Meal: Soup	

@@ -11,6 +11,6 @@
       <Label text="Main Screen" />
       <Label fx:id="trackedNutrients" text="" />
       <Button mnemonicParsing="false" onAction="#switchToNutritionDataEntry" text="Enter Nutritional Data" />
-      <Button mnemonicParsing="false" text="Load Previous Day" />
+      <Button mnemonicParsing="false" onAction="#loadFileSwitchToStatisticsScene" text="Load Previous Day" />
    </children>
 </VBox>
