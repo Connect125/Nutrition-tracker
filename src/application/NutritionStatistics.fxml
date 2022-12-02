@@ -125,7 +125,18 @@
             </Label>
          </children>
       </HBox>
-      <Button mnemonicParsing="false" onAction="#saveFile" text="Save Statistics to File" />
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="File Name:" />
+            <TextField fx:id="fileNaming" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#saveFile" text="Save Statistics to File" />
+            <Label fx:id="fileSavedLabel" />
+         </children>
+      </HBox>
       <Button mnemonicParsing="false" onAction="#switchToMainScreen" text="Return To Main" />
    </children>
 </VBox>

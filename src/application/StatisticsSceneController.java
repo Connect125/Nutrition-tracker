@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class StatisticsSceneController {
@@ -55,6 +56,12 @@ public class StatisticsSceneController {
 	
 	@FXML
 	private Label mostCommonMealLabel;
+	
+	@FXML
+	private TextField fileNaming;
+	
+	@FXML
+	private Label fileSavedLabel;
 	
 	
 	//Instance Variables
@@ -144,9 +151,16 @@ public class StatisticsSceneController {
 	public void displayMealNames(String mostCommonMeal) {
 		mostCommonMealLabel.setText(mostCommonMeal);
 	}
-	
+
+	 /**
+	  * When the Save File button is clicked on the NurtrionStatisitcs Scene. It will save a file with the specified name from fileNaming textbox.
+	  * @throws IOException
+	  */
 	public void saveFile() throws IOException {
-		BufferedWriter writer = new BufferedWriter(new FileWriter("NutritionStatistics.txt"));
+		String fileName = new String(fileNaming.getText());
+		
+		//Creating a BufferedWriter, and PrintaWriter to write to a file with a custom name
+		BufferedWriter writer = new BufferedWriter(new FileWriter(fileName + ".txt"));
 		PrintWriter pwriter = new PrintWriter(writer);
 		pwriter.println("Statistics");
 		pwriter.println("\tAverage\tHigh\tLow\tTotal" );
@@ -154,8 +168,8 @@ public class StatisticsSceneController {
 		pwriter.println("Salt\t\t" + averageSaltLabel.getText() + "\t" + highSaltLabel.getText() + "\t" + lowSaltLabel.getText() + "\t" + totalSaltLabel.getText() + "\t");
 		pwriter.println("Fat\t\t" + averageFatLabel.getText() + "\t" + highFatLabel.getText() + "\t" + lowFatLabel.getText() + "\t" + totalFatLabel.getText() + "\t");
 		pwriter.println("Most Common Meal: " + mostCommonMealLabel.getText() + "\t");
-		writer.close();
-		
+		fileSavedLabel.setText("File saved as: " + fileName);
+		writer.close();	
 	}
 	
 
