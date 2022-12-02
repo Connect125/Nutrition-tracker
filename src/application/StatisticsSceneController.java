@@ -146,10 +146,16 @@ public class StatisticsSceneController {
 	}
 	
 	public void saveFile() throws IOException {
-		BufferedWriter writer = new BufferedWriter(new FileWriter("NutritionStatistics"));
+		BufferedWriter writer = new BufferedWriter(new FileWriter("NutritionStatistics.txt"));
 		PrintWriter pwriter = new PrintWriter(writer);
 		pwriter.println("Statistics");
 		pwriter.println("\tAverage\tHigh\tLow\tTotal" );
+		pwriter.println("Calories\t" + averageCaloriesLabel.getText() + "\t" + highCaloriesLabel.getText() + "\t" + lowCaloriesLabel.getText() + "\t" + totalCaloriesLabel.getText() + "\t");
+		pwriter.println("Salt\t\t" + averageSaltLabel.getText() + "\t" + highSaltLabel.getText() + "\t" + lowSaltLabel.getText() + "\t" + totalSaltLabel.getText() + "\t");
+		pwriter.println("Fat\t\t" + averageFatLabel.getText() + "\t" + highFatLabel.getText() + "\t" + lowFatLabel.getText() + "\t" + totalFatLabel.getText() + "\t");
+		pwriter.println("Most Common Meal: " + mostCommonMealLabel.getText() + "\t");
+		writer.close();
+		
 	}
 	
 
