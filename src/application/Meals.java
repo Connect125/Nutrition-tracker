@@ -144,11 +144,11 @@ public class Meals extends Meal {
 	 * @return
 	 * The value for the average calories per meal
 	 */
-	public double FindAverageCalories() {
+	public double findAverageCalories() {
 		double totalCalories = 0;
 		double averageCalories = 0;
 		
-		totalCalories = FindTotalCalories(); //using the FindTotalCalories method to find total calories
+		totalCalories = findTotalCalories(); //using the FindTotalCalories method to find total calories
 		
 		averageCalories = totalCalories/Meals.size(); //Divide total calories by Meals list size to find the average per daily meal
 		
@@ -160,7 +160,7 @@ public class Meals extends Meal {
 	 * @return
 	 * the largest calorie value
 	 */
-	public double FindHighCalories() {
+	public double findHighCalories() {
 		double highCalories = 0;
 		
 		double[] list = new double[5];
@@ -178,7 +178,7 @@ public class Meals extends Meal {
 	 * @return
 	 * the lowest calorie value
 	 */
-	public double FindLowCalories() {
+	public double findLowCalories() {
 		double lowCalories = 0;
 		
 		double[] list = new double[5];
@@ -196,7 +196,7 @@ public class Meals extends Meal {
 	 * @return
 	 * Returns the total number of calories
 	 */
-	public double FindTotalCalories() {
+	public double findTotalCalories() {
 		double totalCalories = 0;
 		
 		double caloriesBreakfast = Meals.get(0).getCalories();
@@ -215,11 +215,11 @@ public class Meals extends Meal {
 	 * @return
 	 * The value for the average Salt per meal
 	 */
-	public double AverageSalt() {
+	public double averageSalt() {
 		double totalSalt = 0;
 		double averageSalt = 0;
 		
-		totalSalt = FindTotalSalt(); //using the FindTotalSalt method to find total Salt
+		totalSalt = findTotalSalt(); //using the FindTotalSalt method to find total Salt
 		
 		averageSalt = totalSalt/Meals.size(); //Divide total Salt by Meals list size to find the average per daily meal
 		
@@ -231,7 +231,7 @@ public class Meals extends Meal {
 	 * @return
 	 * the largest Salt value
 	 */
-	public double FindHighSalt() {
+	public double findHighSalt() {
 		double highSalt = 0;
 		
 		double[] list = new double[5];
@@ -249,7 +249,7 @@ public class Meals extends Meal {
 	 * @return
 	 * the lowest salt value
 	 */
-	public double FindLowSalt() {
+	public double findLowSalt() {
 		double lowSalt = 0;
 		
 		double[] list = new double[5];
@@ -267,7 +267,7 @@ public class Meals extends Meal {
 	 * @return
 	 * Returns the total number of salt
 	 */
-	public double FindTotalSalt() {
+	public double findTotalSalt() {
 		double totalSalt = 0;
 		
 		double saltBreakfast = Meals.get(0).getSalt();
@@ -286,11 +286,11 @@ public class Meals extends Meal {
 	 * @return
 	 * The value for the average fat per meal
 	 */
-	public double AverageFat() {
+	public double averageFat() {
 		double totalFat = 0;
 		double averageFat = 0;
 		
-		totalFat = FindTotalFat(); //using the FindTotalfat method to find total fat
+		totalFat = findTotalFat(); //using the FindTotalfat method to find total fat
 		
 		averageFat = totalFat/Meals.size(); //Divide total fat by Meals list size to find the average per daily meal
 		
@@ -302,7 +302,7 @@ public class Meals extends Meal {
 	 * @return
 	 * the largest fat value
 	 */
-	public double FindHighFat() {
+	public double findHighFat() {
 		double highFat = 0;
 		
 		double[] list = new double[5];
@@ -320,7 +320,7 @@ public class Meals extends Meal {
 	 * @return
 	 * the lowest fat value
 	 */
-	public double FindLowFat() {
+	public double findLowFat() {
 		double lowFat = 0;
 		
 		double[] list = new double[5];
@@ -338,7 +338,7 @@ public class Meals extends Meal {
 	 * @return
 	 * Returns the total number of fat
 	 */
-	public double FindTotalFat() {
+	public double findTotalFat() {
 		double totalFat = 0;
 		
 		double fatBreakfast = Meals.get(0).getFat();

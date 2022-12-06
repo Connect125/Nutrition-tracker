@@ -294,25 +294,25 @@ public class DataEntrySceneController {
 			mostCommonMealDisplay = dayOne.mostCommonMeal();
 			
 			//Getting average Display info
-			averageCaloriesDisplay = String.valueOf(dayOne.FindAverageCalories());
-			averageSaltDisplay = String.valueOf(dayOne.AverageSalt());
-			averageFatDisplay = String.valueOf(dayOne.AverageFat());
+			averageCaloriesDisplay = String.valueOf(dayOne.findAverageCalories());
+			averageSaltDisplay = String.valueOf(dayOne.averageSalt());
+			averageFatDisplay = String.valueOf(dayOne.averageFat());
 			
 			
 			//Getting high display info
-			highCaloriesDisplay = String.valueOf(dayOne.FindHighCalories()); 
-			highSaltDisplay = String.valueOf(dayOne.FindHighSalt()); 
-			highFatDisplay = String.valueOf(dayOne.FindHighFat()); 
+			highCaloriesDisplay = String.valueOf(dayOne.findHighCalories()); 
+			highSaltDisplay = String.valueOf(dayOne.findHighSalt()); 
+			highFatDisplay = String.valueOf(dayOne.findHighFat()); 
 			
 			//Getting low display info
-			lowCaloriesDisplay = String.valueOf(dayOne.FindLowCalories());
-			lowSaltDisplay = String.valueOf(dayOne.FindLowSalt());
-			lowFatDisplay = String.valueOf(dayOne.FindLowFat());
+			lowCaloriesDisplay = String.valueOf(dayOne.findLowCalories());
+			lowSaltDisplay = String.valueOf(dayOne.findLowSalt());
+			lowFatDisplay = String.valueOf(dayOne.findLowFat());
 			
 			//Getting total display info
-			totalCaloriesDisplay = String.valueOf(dayOne.FindTotalCalories());
-			totalSaltDisplay = String.valueOf(dayOne.FindTotalSalt());
-			totalFatDisplay = String.valueOf(dayOne.FindTotalFat());
+			totalCaloriesDisplay = String.valueOf(dayOne.findTotalCalories());
+			totalSaltDisplay = String.valueOf(dayOne.findTotalSalt());
+			totalFatDisplay = String.valueOf(dayOne.findTotalFat());
 			
 			//Passes all the data entered to the Statistics scene for display to user.
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("NutritionStatistics.fxml"));
@@ -333,8 +333,6 @@ public class DataEntrySceneController {
 			}
 		}
 			
-	
-		
 		/**
 		 * Takes a String that represents a value and checks throws an error if it is not.
 		 * @param valueAsString
