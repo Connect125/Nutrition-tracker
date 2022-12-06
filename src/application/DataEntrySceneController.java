@@ -129,6 +129,8 @@ public class DataEntrySceneController {
 		}
 		
 		//Error Checking on textfields before making Meal objects and custom error messages
+		//I Thought about moving the error checks to their own method/class, but thought the custom ErrorLabels added too much value,
+		//and wasn't sure how I could return the messages and errorDectcted boolean effectively
 		try {
 			numericOnlyCheck(breakfastCalories.getText());
 		} catch (NumericOnlyException e) {
@@ -279,6 +281,7 @@ public class DataEntrySceneController {
 			dataEntryErrorLabel2.setTextFill(Color.RED);
 		}
 		
+		//if no error found proceed with changing scene, and passing information
 		if (errorDectected == false) {
 			//Creating all the meal objects
 			Meal breakfast = new Meal(breakfastName.getText(), breakfastCalories.getText(), breakfastSalt.getText(), breakfastFat.getText());
