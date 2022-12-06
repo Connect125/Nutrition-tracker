@@ -14,7 +14,6 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class DataEntrySceneController {
-	int dayIndex = 1;
 	
 	@FXML
 	private TextField breakfastCalories; 
@@ -77,9 +76,6 @@ public class DataEntrySceneController {
 	private TextField snack2Name;
 	
 	@FXML
-	private Label dayNumberLabel;
-	
-	@FXML
 	private Label dataEntryErrorLabel;
 	
 	@FXML
@@ -89,39 +85,6 @@ public class DataEntrySceneController {
 	private Scene scene;
 	private Parent root;
 	
-	/**
-	 * Updates the day number displayed in the top corner
-	 * @param dayNumber
-	 */
-	public void displayDayNumber(String dayNumber) {
-		dayNumberLabel.setText(dayNumber);
-	}
-	
-	/**
-	 * Tries it's best to generate a new scene for entering data
-	 * @param event
-	 * from clicking the button "Next Day"
-	 * @throws IOException
-	 */
-	public void nextDay (ActionEvent event) throws IOException{
-		System.out.println("dayIndex " + dayIndex);
-		
-		dayIndex++;
-		
-		System.out.println("dayIndex " + dayIndex);
-
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("NutritionDataEntry.fxml"));
-		root = loader.load();
-		
-		DataEntrySceneController DataEntrySceneController = loader.getController();
-		DataEntrySceneController.displayDayNumber("Day #" + dayIndex);
-		
-		stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-		System.out.println("dayIndex " + dayIndex);
-	}
 	
 	/**
 	 * Gathers all the data from the DataEntryScene checks for errors and if none are found switches to the StatisticsScene
@@ -165,7 +128,7 @@ public class DataEntrySceneController {
 			dataEntryErrorLabel2.setTextFill(Color.RED);
 		}
 		
-		//Error Checking on textfields before making Meal objects
+		//Error Checking on textfields before making Meal objects and custom error messages
 		try {
 			numericOnlyCheck(breakfastCalories.getText());
 		} catch (NumericOnlyException e) {
