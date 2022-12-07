@@ -11,6 +11,9 @@ import javafx.scene.layout.VBox;
 
 public class Main extends Application {
 	@Override
+	/**
+	 * Starts the application by calling the main scene GUI
+	 */
 	public void start(Stage primaryStage) {
 		try {
 			FXMLLoader loader = new FXMLLoader(); 

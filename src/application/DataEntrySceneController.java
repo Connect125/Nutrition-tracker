@@ -14,7 +14,6 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class DataEntrySceneController {
-	int dayIndex = 1;
 	
 	@FXML
 	private TextField breakfastCalories; 
@@ -77,9 +76,6 @@ public class DataEntrySceneController {
 	private TextField snack2Name;
 	
 	@FXML
-	private Label dayNumberLabel;
-	
-	@FXML
 	private Label dataEntryErrorLabel;
 	
 	@FXML
@@ -89,39 +85,6 @@ public class DataEntrySceneController {
 	private Scene scene;
 	private Parent root;
 	
-	/**
-	 * Updates the day number displayed in the top corner
-	 * @param dayNumber
-	 */
-	public void displayDayNumber(String dayNumber) {
-		dayNumberLabel.setText(dayNumber);
-	}
-	
-	/**
-	 * Tries it's best to generate a new scene for entering data
-	 * @param event
-	 * from clicking the button "Next Day"
-	 * @throws IOException
-	 */
-	public void nextDay (ActionEvent event) throws IOException{
-		System.out.println("dayIndex " + dayIndex);
-		
-		dayIndex++;
-		
-		System.out.println("dayIndex " + dayIndex);
-
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("NutritionDataEntry.fxml"));
-		root = loader.load();
-		
-		DataEntrySceneController DataEntrySceneController = loader.getController();
-		DataEntrySceneController.displayDayNumber("Day #" + dayIndex);
-		
-		stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-		System.out.println("dayIndex " + dayIndex);
-	}
 	
 	/**
 	 * Gathers all the data from the DataEntryScene checks for errors and if none are found switches to the StatisticsScene
@@ -165,7 +128,9 @@ public class DataEntrySceneController {
 			dataEntryErrorLabel2.setTextFill(Color.RED);
 		}
 		
-		//Error Checking on textfields before making Meal objects
+		//Error Checking on textfields before making Meal objects and custom error messages
+		//I Thought about moving the error checks to their own method/class, but thought the custom ErrorLabels added too much value,
+		//and wasn't sure how I could return the messages and errorDectcted boolean effectively
 		try {
 			numericOnlyCheck(breakfastCalories.getText());
 		} catch (NumericOnlyException e) {
@@ -316,6 +281,7 @@ public class DataEntrySceneController {
 			dataEntryErrorLabel2.setTextFill(Color.RED);
 		}
 		
+		//if no error found proceed with changing scene, and passing information
 		if (errorDectected == false) {
 			//Creating all the meal objects
 			Meal breakfast = new Meal(breakfastName.getText(), breakfastCalories.getText(), breakfastSalt.getText(), breakfastFat.getText());
@@ -331,25 +297,25 @@ public class DataEntrySceneController {
 			mostCommonMealDisplay = dayOne.mostCommonMeal();
 			
 			//Getting average Display info
-			averageCaloriesDisplay = String.valueOf(dayOne.FindAverageCalories());
-			averageSaltDisplay = String.valueOf(dayOne.AverageSalt());
-			averageFatDisplay = String.valueOf(dayOne.AverageFat());
+			averageCaloriesDisplay = String.valueOf(dayOne.findAverageCalories());
+			averageSaltDisplay = String.valueOf(dayOne.averageSalt());
+			averageFatDisplay = String.valueOf(dayOne.averageFat());
 			
 			
 			//Getting high display info
-			highCaloriesDisplay = String.valueOf(dayOne.FindHighCalories()); 
-			highSaltDisplay = String.valueOf(dayOne.FindHighSalt()); 
-			highFatDisplay = String.valueOf(dayOne.FindHighFat()); 
+			highCaloriesDisplay = String.valueOf(dayOne.findHighCalories()); 
+			highSaltDisplay = String.valueOf(dayOne.findHighSalt()); 
+			highFatDisplay = String.valueOf(dayOne.findHighFat()); 
 			
 			//Getting low display info
-			lowCaloriesDisplay = String.valueOf(dayOne.FindLowCalories());
-			lowSaltDisplay = String.valueOf(dayOne.FindLowSalt());
-			lowFatDisplay = String.valueOf(dayOne.FindLowFat());
+			lowCaloriesDisplay = String.valueOf(dayOne.findLowCalories());
+			lowSaltDisplay = String.valueOf(dayOne.findLowSalt());
+			lowFatDisplay = String.valueOf(dayOne.findLowFat());
 			
 			//Getting total display info
-			totalCaloriesDisplay = String.valueOf(dayOne.FindTotalCalories());
-			totalSaltDisplay = String.valueOf(dayOne.FindTotalSalt());
-			totalFatDisplay = String.valueOf(dayOne.FindTotalFat());
+			totalCaloriesDisplay = String.valueOf(dayOne.findTotalCalories());
+			totalSaltDisplay = String.valueOf(dayOne.findTotalSalt());
+			totalFatDisplay = String.valueOf(dayOne.findTotalFat());
 			
 			//Passes all the data entered to the Statistics scene for display to user.
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("NutritionStatistics.fxml"));
@@ -370,8 +336,6 @@ public class DataEntrySceneController {
 			}
 		}
 			
-	
-		
 		/**
 		 * Takes a String that represents a value and checks throws an error if it is not.
 		 * @param valueAsString

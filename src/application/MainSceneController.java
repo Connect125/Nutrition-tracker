@@ -47,7 +47,11 @@ public class MainSceneController {
 		stage.setScene(scene);
 		stage.show();
 	}
-	
+	/**
+	 * This method reads a specified file, and changes to the StatisticsScene to display the file
+	 * @param event This is from clicking the load file button
+	 * @throws IOException
+	 */
 	public void loadFileSwitchToStatisticsScene(ActionEvent event) throws IOException{
 			
 		//String for custom file name
@@ -146,12 +150,10 @@ public class MainSceneController {
 			stage.setScene(scene);
 			stage.show();
 		}else {
+			//Provides error message to the user if file cannot be found
 			fileNameErrorLabel.setText("No file named " + fileReadName.getText() + ".txt" + " could be found.");
 			fileNameErrorLabel.setTextFill(Color.RED);
 		}
-		
-		
-		
 	}
 	
 	

@@ -2,6 +2,8 @@ package application;
 
 public class NumericOnlyException extends Exception {
 
+	//Only contains default exception constructors 
+	
 	public NumericOnlyException() {
 	}
 
